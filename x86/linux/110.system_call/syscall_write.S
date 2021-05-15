@@ -5,7 +5,7 @@
 
 main:
         mov     rax, 1                  /* write() */
-        mov     rdi, 1		        /* fd: stdout */
+        mov     rdi, 1                  /* fd: stdout */
         lea     rsi, [rip + msg]        /* buf: */
         mov     rdx, 13                 /* count: */
 

@@ -10,4 +10,4 @@ main:
         ret
  
 
-msg:	.string "Hello world!\n"
+msg:    .string "Hello world!\n"

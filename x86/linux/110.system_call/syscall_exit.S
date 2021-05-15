@@ -5,6 +5,6 @@
 
 main:
         mov     rax, 60                 /* exit() */
-        mov     rdi, 0		        /* status: success */
+        mov     rdi, 0                  /* status: success */
         syscall
  
