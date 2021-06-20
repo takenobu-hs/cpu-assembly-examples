@@ -1,5 +1,5 @@
 /*
- * Simple code example for x86/Linux
+ * Simple code example for RISV-V(RV64)/Linux
  */
 
 .global main
