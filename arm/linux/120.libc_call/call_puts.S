@@ -11,7 +11,7 @@ main:
         stp     x29, x30, [sp, -16]!
 
 
-        /* call putchar() */
+        /* call puts() */
         adr     x0, msg                 /* 1st argument */
         bl      puts    
 
