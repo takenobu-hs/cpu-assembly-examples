@@ -1,6 +1,7 @@
 /*
- * read time-stamp counter with rdtsc instruction
+ * Getting time-information (counter) for x86/Linux
  *
+ *   * Read time-stamp counter with rdtsc instruction
  */
 
 .intel_syntax noprefix
@@ -17,5 +18,5 @@ main:
         call    printf
 
         ret
- 
+
 fmt:    .string "edx = %08x; eax = %08x\n"

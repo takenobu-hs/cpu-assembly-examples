@@ -1,10 +1,10 @@
 /*
- * read real-time clock with io-port 70,71
+ * Getting time-information (year, month, day, hour, min, sec) for x86/Linux
  *
- *   * Run on sudo for ioperm
- *   * rts is coded with BCD(binary-coded decimal)
+ *   * Read real-time clock(RTC) with io-port 70,71
+ *   * Execute with sudo for ioperm
+ *   * RTS is coded with BCD(binary-coded decimal)
  *   * see: linux-kernel's arch/x86/kernel/rtc.c
- *
  */
 
 .intel_syntax noprefix
@@ -17,7 +17,7 @@ main:
         mov     rdi, 0x70
         mov     rsi, 2
         mov     rdx, 1
-        call    ioperm                  /* see; man 2 ioperm() */
+        call    ioperm                  /* see; man ioperm(2) */
 
 
         /* read rtc for date */
@@ -66,11 +66,10 @@ main:
 
         /* exit */
         ret
- 
+
 
 fmt_date:
         .string "year-month-day = %02x - %02x - %02x\n"
 
 fmt_time:
         .string "hour:min:sec   = %02x : %02x : %02x\n"
-

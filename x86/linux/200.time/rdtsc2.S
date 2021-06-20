@@ -1,6 +1,7 @@
 /*
- * read time-stamp counter twice
+ * Getting time-information (counter) for x86/Linux
  *
+ *   * Read time-stamp counter twice
  */
 
 .intel_syntax noprefix
@@ -30,5 +31,5 @@ main:
 
         /* exit */
         ret
- 
+
 fmt:    .string "edx = %08x; eax = %08x\n"

@@ -1,3 +1,10 @@
+/*
+ * C standard library call example for x86/Linux
+ *
+ *   * printf(3) standard-library
+ *   * variable argument call
+ *   * see: x86-64 ABI (https://gitlab.com/x86-psABIs/x86-64-ABI)
+ */
 
 .intel_syntax noprefix
 
@@ -10,5 +17,5 @@ main:
         call    printf
 
         ret
- 
+
 msg:    .string "Hello world!\n"

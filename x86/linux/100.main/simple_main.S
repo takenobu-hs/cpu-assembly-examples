@@ -1,3 +1,6 @@
+/*
+ * Simple code example for x86/Linux
+ */
 
 .intel_syntax noprefix
 
@@ -5,4 +8,3 @@
 
 main:
         ret
- 
