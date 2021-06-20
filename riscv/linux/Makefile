@@ -3,7 +3,7 @@
 
 CC := riscv64-unknown-linux-gnu-gcc
 OBJDUMP := riscv64-unknown-linux-gnu-objdump
-LDFLAGS += -no-pie -static
+LDFLAGS += -static
 CFLAGS += -march=rv64id		# to generate 32bit code
 
 TARGETS := $(basename $(wildcard *.S))
