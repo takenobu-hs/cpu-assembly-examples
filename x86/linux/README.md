@@ -1,5 +1,6 @@
 
-# x86 assembly examples on linux
+x86 assembly examples on linux
+==============================
 
 ## Examples
   * [simple main](./100.main)
@@ -54,5 +55,6 @@
 * Funcation call
   * rdi, rsi, rdx, rcx, r8, r9, (rsp)
 
-* see: glibc's sysdeps/unix/sysv/linux/x86_64/syscall.S
-
+* see:
+  * glibc's sysdeps/unix/sysv/linux/x86_64/syscall.S
+  * [x86-64 psABI](https://gitlab.com/x86-psABIs/x86-64-ABI)
