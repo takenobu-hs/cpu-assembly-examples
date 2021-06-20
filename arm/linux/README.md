@@ -45,6 +45,9 @@ Arm (Armv8 aarch64) assembly examples on linux
 * ABI for the Arm 64-bit Architecture
   * [Application Binary Interface (ABI)](https://developer.arm.com/architectures/system-architectures/software-standards/abi)
 
+* System call ABI
+  * [syscall(2) - Linux manual page](https://man7.org/linux/man-pages/man2/syscall.2.html)
+
 
 ## Further information
 
@@ -57,5 +60,5 @@ Arm (Armv8 aarch64) assembly examples on linux
   * x0, x1, x2, x3, x4, x5, x6, x7
 
 * see:
-  * glibc's sysdeps/unix/sysv/linux/aarch64/syscall.S
   * [Application Binary Interface (ABI)](https://developer.arm.com/architectures/system-architectures/software-standards/abi)
+  * glibc's sysdeps/unix/sysv/linux/aarch64/syscall.S
