@@ -4,7 +4,7 @@
 CC := gcc
 CC := aarch64-linux-gnu-gcc
 OBJDUMP := aarch64-linux-gnu-objdump
-LDFLAGS += -no-pie -static
+LDFLAGS += -static
 
 TARGETS := $(basename $(wildcard *.S))
 
