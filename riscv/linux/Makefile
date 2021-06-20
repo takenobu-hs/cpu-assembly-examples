@@ -1,8 +1,8 @@
 
 # Makefile for RISC-V/RV64ID
 
-CC := /opt/riscv/bin/riscv64-unknown-linux-gnu-gcc
-OBJDUMP := /opt/riscv/bin/riscv64-unknown-linux-gnu-objdump
+CC := riscv64-unknown-linux-gnu-gcc
+OBJDUMP := riscv64-unknown-linux-gnu-objdump
 LDFLAGS += -no-pie -static
 CFLAGS += -march=rv64id		# to generate 32bit code
 
