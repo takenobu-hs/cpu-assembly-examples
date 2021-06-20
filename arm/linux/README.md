@@ -51,10 +51,10 @@ Arm (Armv8 aarch64) assembly examples on linux
 ### Calling convention
 
 * System call
-  * r0, r1, r2, r3, r4, r5, r6, r7
+  * x8, x0, x1, x2, x3, x4, x5, x6
 
 * Funcation call
-  * r0, r1, r2, r3, r4, r5, r6, r7
+  * x0, x1, x2, x3, x4, x5, x6, x7
 
 * see:
   * glibc's sysdeps/unix/sysv/linux/aarch64/syscall.S
