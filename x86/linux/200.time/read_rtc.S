@@ -1,35 +1,43 @@
 /*
  * Getting time-information (sec) for x86/Linux
  *
+ *   * Cannot execute this under kernel lockdown!
+ *
  *   * Read real-time clock(RTC) with io-port 70,71
- *   * Execute with sudo for ioperm
  *   * RTS is coded with BCD(binary-coded decimal)
+ *   * Execute with sudo for ioperm
  *   * see: linux-kernel's arch/x86/kernel/rtc.c
  */
 
-.intel_syntax noprefix
-
-.global main
+        .intel_syntax noprefix
+        .global main
 
 main:
-
-        /* ioperm */
+        /* set io-port permissions with ioperm(2) */
         mov     rdi, 0x70
         mov     rsi, 2
         mov     rdx, 1
         call    ioperm                  /* see; man ioperm(2) */
 
 
-        /* read rtc */
+        /* read real-time clock(RTC) */
         mov     al, 0                   /* RTC_SECONDS */
         out     0x70, al                /* write rtc */
   	in      al, 0x71                /* read rtc */
-        mov     rsi, rax
 
+
+        /* printf for result-checking */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
+        mov     rsi, rax                /* 2nd argument for printf */
   	mov	rax, 0                  /* the number of vector regsters */
         call    printf
 
+
+        /* return from main */
         ret
 
-fmt:	.string "rtc seconds = %02x\n"
+
+        /* read-only data */
+        .section .rodata
+fmt:
+        .string "rtc seconds = %02x\n"

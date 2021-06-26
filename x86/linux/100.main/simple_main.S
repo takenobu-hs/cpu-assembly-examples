@@ -1,10 +1,9 @@
 /*
- * Simple code example for x86/Linux
+ * Simple main example for x86/Linux
  */
 
-.intel_syntax noprefix
-
-.global main
+        .intel_syntax noprefix
+        .global main
 
 main:
         ret

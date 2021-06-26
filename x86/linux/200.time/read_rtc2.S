@@ -1,26 +1,26 @@
 /*
  * Getting time-information (year, month, day, hour, min, sec) for x86/Linux
  *
+ *   * Cannot execute this under kernel lockdown!
+ *
  *   * Read real-time clock(RTC) with io-port 70,71
- *   * Execute with sudo for ioperm
  *   * RTS is coded with BCD(binary-coded decimal)
+ *   * Execute with sudo for ioperm
  *   * see: linux-kernel's arch/x86/kernel/rtc.c
  */
 
-.intel_syntax noprefix
-
-.global main
+        .intel_syntax noprefix
+        .global main
 
 main:
-
-        /* ioperm */
+        /* set io-port permissions with ioperm(2) */
         mov     rdi, 0x70
         mov     rsi, 2
         mov     rdx, 1
         call    ioperm                  /* see; man ioperm(2) */
 
 
-        /* read rtc for date */
+        /* read real-time clock(RTC) for date */
         mov     al, 9                   /* RTC_YEAR */
         out     0x70, al                /* write rtc */
   	in      al, 0x71                /* read rtc */
@@ -36,13 +36,13 @@ main:
   	in      al, 0x71                /* read rtc */
         mov     rcx, rax                /* 4th arg for printf */
 
-        /* print */
+        /* printf for result-checking */
         lea     rdi, [rip + fmt_date]   /* 1st argument for printf */
   	mov	rax, 0                  /* the number of vector regsters */
         call    printf
 
 
-        /* read rtc for time */
+        /* read real-time clock(RTC) for time */
         mov     al, 4                   /* RTC_HOURS */
         out     0x70, al                /* write rtc */
   	in      al, 0x71                /* read rtc */
@@ -58,16 +58,18 @@ main:
   	in      al, 0x71                /* read rtc */
         mov     rcx, rax                /* 4th arg for printf */
 
-        /* print */
+        /* printf for result-checking */
         lea     rdi, [rip + fmt_time]   /* 1st argument for printf */
   	mov	rax, 0                  /* the number of vector regsters */
         call    printf
 
 
-        /* exit */
+        /* return from main */
         ret
 
 
+        /* read-only data */
+        .section .rodata
 fmt_date:
         .string "year-month-day = %02x - %02x - %02x\n"
 

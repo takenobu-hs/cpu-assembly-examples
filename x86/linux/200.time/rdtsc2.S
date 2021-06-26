@@ -4,32 +4,37 @@
  *   * Read time-stamp counter twice
  */
 
-.intel_syntax noprefix
-
-.global main
+        .intel_syntax noprefix
+        .global main
 
 main:
         /* 1st rdtsc */
-        rdtsc                           /* read time-stamp counter */
-        mov     esi, edx
-        mov     edx, eax
+        rdtsc                           /* read TSC into edx:eax */
 
+        /* 1st printf */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
+        mov     esi, edx                /* 2nd argument for printf */
+        mov     edx, eax                /* 3rd argument for printf */
         mov     rax, 0                  /* the number of vector regsters */
         call    printf
 
 
         /* 2nd rdtsc */
-        rdtsc                           /* read time-stamp counter */
-        mov     esi, edx
-        mov     edx, eax
+        rdtsc                           /* read TSC into edx:eax */
 
+        /* 2nd printf */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
+        mov     esi, edx                /* 2nd argument for printf */
+        mov     edx, eax                /* 3rd argument for printf */
         mov     rax, 0                  /* the number of vector regsters */
         call    printf
 
 
-        /* exit */
+        /* return from main */
         ret
 
-fmt:    .string "edx = %08x; eax = %08x\n"
+
+        /* read-only data */
+        .section .rodata
+fmt:
+        .string "edx = %08x; eax = %08x\n"
