@@ -1,10 +1,10 @@
 
-# Makefile for RISC-V/RV64ID
+# Makefile for RISC-V/RV64G
 
 CC := riscv64-unknown-linux-gnu-gcc
 OBJDUMP := riscv64-unknown-linux-gnu-objdump
 LDFLAGS += -static
-CFLAGS += -march=rv64id		# to generate 32bit code
+CFLAGS += -march=rv64g		# without rv64c (compact instruction)
 
 TARGETS := $(basename $(wildcard *.S))
 
