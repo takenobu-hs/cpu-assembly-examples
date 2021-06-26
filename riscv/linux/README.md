@@ -6,6 +6,7 @@ RISC-V (RV64G) assembly examples on linux
   * [simple main](./100.main)  (./100.main)
   * [system call](./110.system_call) (./110.system_call)
   * [library call](./120.libc_call) (./120.libc_call)
+  * [basic operations](./300.operation) (./300.operation)
 
 
 ## How to try
