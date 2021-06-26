@@ -23,3 +23,12 @@ This repo focuses on CPU hardware, not assembly notation.
 main:
         ret
 ```
+
+
+## Assemble and excecute
+
+```
+$ cd <sample-directory>
+$ make -f ../Makefile  <sample>             # assemble
+$ ./<sample>                                # execute
+```
