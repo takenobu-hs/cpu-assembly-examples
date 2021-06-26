@@ -10,23 +10,66 @@ RISC-V (RV64G) assembly examples on linux
 
 ## How to try
 
-* Assemble
+* Assemble (generate binary)
 
-    ```sh
+    ```
     $ make -f ../Makefile  <sample>
     ```
+
 * Execute
 
-    ```sh
+    ```
     $ ./<sample>
     or
     $ qemu-riscv64 ./<sample>
     ```
 
-* Disassemble
+* Disassemble (for full object)
 
-    ```sh
-    $ make -f ../Makefile  <sample>.disasm
+    ```
+    $ make -f ../Makefile  <sample>.disasm  | less
+    (search "main>" in `less` command)
+    ```
+
+* Disassemble (for .S only)
+
+    ```
+    $ make -f ../Makefile  <sample>.o.disasm
+    ```
+
+* Step execution with gdb
+
+    ```
+    $ make -f ../Makefile  <sample>
+    $ gdb ./<sample>
+    (gdb) layout asm
+    (gdb) layout regs
+    (gdb) break main
+    (gdb) run
+    (gdb) stepi
+      :
+    (gdb) quit
+
+* Step execution with qemu and gdb
+
+    * on first terminal for qemu:
+
+    ```
+    $ qemu-riscv64 -g 1234 ./<sample>
+    ```
+
+    * on second terminal for gdb:
+
+    ```
+    $ riscv64-unknown-linux-gnu-gdb ./<sample>
+    (gdb) layout asm
+    (gdb) layout regs
+    (gdb) target remote localhost:1234
+    (gdb) break main
+    (gdb) continue
+    (gdb) stepi
+      :
+    (gdb) quit
     ```
 
 
@@ -69,3 +112,15 @@ RISC-V (RV64G) assembly examples on linux
 * see:
   * [RISC-V ELF psABI specification](https://github.com/riscv/riscv-elf-psabi-doc/blob/master/riscv-elf.md)
   * glibc's sysdeps/unix/sysv/linux/riscv/syscall.c
+
+### Tool installation on ubuntu (x86)
+
+* Cross assembler (RISC-V GNU Compiler Toolchain)
+
+    Build with https://github.com/riscv/riscv-gnu-toolchain
+
+* QEMU User space emulator
+
+    ```
+    apt install qemu-user
+    ```
