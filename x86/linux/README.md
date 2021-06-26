@@ -7,6 +7,7 @@ x86 assembly examples on linux
   * [system call](./110.system_call) (./110.system_call)
   * [library call](./120.libc_call) (./120.libc_call)
   * [getting time](./200.time) (./200.time)
+  * [basic operations](./300.operation) (./300.operation)
 
 
 ## How to try
