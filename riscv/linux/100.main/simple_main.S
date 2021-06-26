@@ -1,8 +1,8 @@
 /*
- * Simple code example for RISV-V(RV64)/Linux
+ * Simple main example for RISV-V(RV64)/Linux
  */
 
-.global main
+        .global main
 
 main:
         ret
