@@ -1,8 +1,8 @@
 /*
- * Simple code example for Arm(Armv8 aarch64)/Linux
+ * Simple main example for Arm(Armv8 aarch64)/Linux
  */
 
-.global main
+        .global main
 
 main:
         ret
