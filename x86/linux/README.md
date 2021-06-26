@@ -11,21 +11,44 @@ x86 assembly examples on linux
 
 ## How to try
 
-* Assemble
+* Assemble (generate binary)
 
-    ```sh
+    ```
     $ make -f ../Makefile  <sample>
     ```
+
 * Execute
 
-    ```sh
+    ```
     $ ./<sample>
     ```
 
-* Disassemble
+* Disassemble (for full object)
 
-    ```sh
-    $ make -f ../Makefile  <sample>.disasm
+    ```
+    $ make -f ../Makefile  <sample>.disasm  | less
+    (search "main>" in `less` command)
+    ```
+
+* Disassemble (for .S only)
+
+    ```
+    $ make -f ../Makefile  <sample>.o.disasm
+    ```
+
+* Step execution with gdb
+
+    ```
+    $ make -f ../Makefile  <sample>
+    $ gdb ./<sample>
+    (gdb) set disassembly-flavor intel
+    (gdb) layout asm
+    (gdb) layout regs
+    (gdb) break main
+    (gdb) run
+    (gdb) stepi
+      :
+    (gdb) quit
     ```
 
 
@@ -49,6 +72,9 @@ x86 assembly examples on linux
 
 * GNU assembler and linker
   * [Documentation for binutils](https://sourceware.org/binutils/docs/)
+
+* GDB
+  * [GDB Documentation](https://www.gnu.org/software/gdb/documentation/)
 
 
 ## Further information
