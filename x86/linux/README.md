@@ -3,10 +3,10 @@ x86 assembly examples on linux
 ==============================
 
 ## Examples
-  * [simple main](./100.main)
-  * [system call](./110.system_call)
-  * [library call](./120.libc_call)
-  * [getting time](./200.time)
+  * [simple main](./100.main)  (./100.main)
+  * [system call](./110.system_call) (./110.system_call)
+  * [library call](./120.libc_call) (./120.libc_call)
+  * [getting time](./200.time) (./200.time)
 
 
 ## How to try
@@ -44,16 +44,22 @@ x86 assembly examples on linux
 * x86-64 ABI
   * [x86-64 psABI](https://gitlab.com/x86-psABIs/x86-64-ABI)
 
+* GCC
+  * [GCC online documentation](https://gcc.gnu.org/onlinedocs/)
+
+* GNU assembler and linker
+  * [Documentation for binutils](https://sourceware.org/binutils/docs/)
+
 
 ## Further information
 
 ### Calling convention
 
 * System call
-  * rax, rdi, rsi, rdx, r10, r8, r9
+  * rax, rdi, rsi, rdx, r10, r8, r9  ->  rax, rdx
 
 * Funcation call
-  * rdi, rsi, rdx, rcx, r8, r9, (rsp)
+  * rdi, rsi, rdx, rcx, r8, r9, (rsp)  ->  rax, rdx
 
 * see:
   * glibc's sysdeps/unix/sysv/linux/x86_64/syscall.S
