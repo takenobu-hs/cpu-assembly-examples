@@ -24,6 +24,10 @@ all : $(TARGETS)
 	$(OBJDUMP) $(OBJDUMPFLAGS) -d $<
 
 
+%.gdb : %
+	$(GDB) -q -ex "layout regs" -ex "b main" $(GDBFLAGS) $<
+
+
 clean:
 	rm -f *.o
 	rm -f a.out

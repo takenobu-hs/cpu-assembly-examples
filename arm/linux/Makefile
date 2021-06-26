@@ -3,6 +3,7 @@
 
 CC      = aarch64-linux-gnu-gcc
 OBJDUMP = aarch64-linux-gnu-objdump
+GDB     = gdb-multiarch
 
 CFLAGS  += -g
 ASFLAGS += -g
