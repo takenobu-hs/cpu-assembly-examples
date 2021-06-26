@@ -10,23 +10,66 @@ Arm (Armv8 aarch64) assembly examples on linux
 
 ## How to try
 
-* Assemble
+* Assemble (generate binary)
 
-    ```sh
+    ```
     $ make -f ../Makefile  <sample>
     ```
+
 * Execute
 
-    ```sh
+    ```
     $ ./<sample>
     or
     $ qemu-aarch64 ./<sample>
     ```
 
-* Disassemble
+* Disassemble (for full object)
 
-    ```sh
-    $ make -f ../Makefile  <sample>.disasm
+    ```
+    $ make -f ../Makefile  <sample>.disasm  | less
+    (search "main>" in `less` command)
+    ```
+
+* Disassemble (for .S only)
+
+    ```
+    $ make -f ../Makefile  <sample>.o.disasm
+    ```
+
+* Step execution with gdb
+
+    ```
+    $ make -f ../Makefile  <sample>
+    $ gdb ./<sample>
+    (gdb) layout asm
+    (gdb) layout regs
+    (gdb) break main
+    (gdb) run
+    (gdb) stepi
+      :
+    (gdb) quit
+    ```
+
+* Step execution with qemu and gdb
+
+    * on first terminal for qemu:
+
+    ```
+    $ qemu-aarch64 -g 1234 ./<sample>
+    ```
+
+    * on second terminal for gdb:
+
+    ```
+    $ gdb-multiarch -ex "target remote localhost:1234" ./<sample>
+    (gdb) layout asm
+    (gdb) layout regs
+    (gdb) break main
+    (gdb) continue
+    (gdb) stepi
+      :
+    (gdb) quit
     ```
 
 
@@ -54,6 +97,12 @@ Arm (Armv8 aarch64) assembly examples on linux
 * GNU assembler and linker
   * [Documentation for binutils](https://sourceware.org/binutils/docs/)
 
+* GDB
+  * [GDB Documentation](https://www.gnu.org/software/gdb/documentation/)
+
+* QEMU
+  * [QEMU User space emulator](https://qemu-project.gitlab.io/qemu/user/main.html)
+
 
 ## Further information
 
@@ -68,3 +117,23 @@ Arm (Armv8 aarch64) assembly examples on linux
 * see:
   * [Application Binary Interface (ABI)](https://developer.arm.com/architectures/system-architectures/software-standards/abi)
   * glibc's sysdeps/unix/sysv/linux/aarch64/syscall.S
+
+### Tool installation on ubuntu (x86)
+
+* Cross assembler (GNU Compiler Toolchain)
+
+    ```
+    apt install g++-aarch64-linux-gnu
+    ```
+
+* QEMU User space emulator
+
+    ```
+    apt install qemu-user
+    ```
+
+* Cross debugger
+
+    ```
+    apt install gdb-multiarch
+    ```
