@@ -3,9 +3,9 @@ Arm (Armv8 aarch64) assembly examples on linux
 ==============================================
 
 ## Examples
-  * [simple main](./100.main)
-  * [system call](./110.system_call)
-  * [library call](./120.libc_call)
+  * [simple main](./100.main)  (./100.main)
+  * [system call](./110.system_call) (./110.system_call)
+  * [library call](./120.libc_call) (./120.libc_call)
 
 
 ## How to try
@@ -48,16 +48,22 @@ Arm (Armv8 aarch64) assembly examples on linux
 * System call ABI
   * [syscall(2) - Linux manual page](https://man7.org/linux/man-pages/man2/syscall.2.html)
 
+* GCC
+  * [GCC online documentation](https://gcc.gnu.org/onlinedocs/)
+
+* GNU assembler and linker
+  * [Documentation for binutils](https://sourceware.org/binutils/docs/)
+
 
 ## Further information
 
 ### Calling convention
 
 * System call
-  * x8, x0, x1, x2, x3, x4, x5, x6
+  * x8, x0, x1, x2, x3, x4, x5  ->  x0, x1
 
 * Funcation call
-  * x0, x1, x2, x3, x4, x5, x6, x7
+  * x0, x1, x2, x3, x4, x5, x6, x7  ->  x0, x1
 
 * see:
   * [Application Binary Interface (ABI)](https://developer.arm.com/architectures/system-architectures/software-standards/abi)
