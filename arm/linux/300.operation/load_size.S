@@ -25,11 +25,11 @@ main:
 
 
         /* printf for result-checking */
-        adr     x0, fmt                 /* 1st argument for printf*/
-        mov     x1, x11                 /* 2nd argument for printf*/
-        mov     x2, x12                 /* 3rd argument for printf*/
-        mov     x3, x13                 /* 4th argument for printf*/
-        mov     x4, x14                 /* 5th argument for printf*/
+        adr     x0, fmt                 /* 1st argument for printf */
+        mov     x1, x11                 /* 2nd argument */
+        mov     x2, x12                 /* 3rd argument */
+        mov     x3, x13                 /* 4th argument */
+        mov     x4, x14                 /* 5th argument */
         bl      printf    
 
 
