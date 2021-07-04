@@ -8,6 +8,7 @@ x86 assembly examples on linux
   * [library call](./120.libc_call) (./120.libc_call)
   * [getting time](./200.time) (./200.time)
   * [basic operations](./300.operation) (./300.operation)
+  * [control flow](./400.control_flow) (./400.control_flow)
 
 
 ## How to try
