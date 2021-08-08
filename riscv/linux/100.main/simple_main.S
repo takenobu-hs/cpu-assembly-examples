@@ -1,5 +1,5 @@
 /*
- * Simple main example for RISV-V(RV64)/Linux
+ * Simple main example for RISC-V(RV64)/Linux
  */
 
         .global main

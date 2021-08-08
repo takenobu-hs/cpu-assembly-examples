@@ -1,5 +1,5 @@
 /*
- * C standard library call example for RISV-V(RV64)/Linux
+ * C standard library call example for RISC-V(RV64)/Linux
  *
  *   * puts(3) standard-library
  *   * see: man 3 puts

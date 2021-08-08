@@ -1,5 +1,5 @@
 /*
- * Operation example for RISV-V(RV64)/Linux
+ * Operation example for RISC-V(RV64)/Linux
  *
  *   * add operation
  */

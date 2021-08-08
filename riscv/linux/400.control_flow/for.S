@@ -1,5 +1,5 @@
 /*
- * Control-flow example for RISV-V(RV64)/Linux
+ * Control-flow example for RISC-V(RV64)/Linux
  *
  *   * `for`-structure example
  *

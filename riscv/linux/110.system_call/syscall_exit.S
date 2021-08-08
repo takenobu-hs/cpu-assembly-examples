@@ -1,5 +1,5 @@
 /*
- * System-call example for RISV-V(RV64)/Linux
+ * System-call example for RISC-V(RV64)/Linux
  *
  *   * exit(2) system-call
  *   * see: man 2 exit
