@@ -1,6 +1,11 @@
 /*
  * Atomic operation example for x86/Linux
  *
+ *   * atomic operations.
+ *     * swap (xchg)
+ *     * compare and swap (cmpxchg)
+ *     * fetch and add (xadd)
+ *
  *   * see: Intel 64 and IA-32 Architectures Software Developer’s Manual
  *          Volume 3: System Programming Guide:
  *          8.2 MEMORY ORDERING

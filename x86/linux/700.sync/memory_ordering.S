@@ -1,6 +1,11 @@
 /*
  * Memory ordeirng example for x86/Linux
  *
+ *   * memory ordering operations.
+ *     * load fence (lfence)
+ *     * store fence (sfence)
+ *     * memory fence (mfence)
+ *
  *   * see: Intel 64 and IA-32 Architectures Software Developer’s Manual
  *          Volume 3: System Programming Guide:
  *          8.2 MEMORY ORDERING
