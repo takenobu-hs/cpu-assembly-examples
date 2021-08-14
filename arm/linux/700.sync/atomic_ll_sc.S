@@ -1,5 +1,8 @@
 /*
- * Memory ordeirng example for Arm(Armv8 aarch64)/Linux
+ * Atomic operation example for Arm(Armv8 aarch64)/Linux
+ *
+ *   * atomic operations with load-linked / store-conditional.
+ *     operations with weak consistency (without release/acquire).
  *
  *   * see: Arm Architecture Reference Manual Armv8, for Armv8-A
  *          architecture profile,

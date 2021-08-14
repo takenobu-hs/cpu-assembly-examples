@@ -1,5 +1,10 @@
 /*
- * Memory ordeirng example for Arm(Armv8 aarch64)/Linux
+ * Atomic operation example for Arm(Armv8 aarch64)/Linux
+ *
+ *   * atomic operations with weak consistency (without release/acquire).
+ *     * swap (swp)
+ *     * compare and swap (cas)
+ *     * fetch and add (ldadd)
  *
  *   * see: Arm Architecture Reference Manual Armv8, for Armv8-A
  *          architecture profile,

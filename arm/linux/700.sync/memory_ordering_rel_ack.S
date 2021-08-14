@@ -1,6 +1,8 @@
 /*
  * Memory ordeirng example for Arm(Armv8 aarch64)/Linux
  *
+ *   * memory ordering operations with release/aquire consistency.
+ *
  *   * see: Arm Architecture Reference Manual Armv8, for Armv8-A
  *          architecture profile,
  *          Chapter B2 The AArch64 Application Level Memory Model
