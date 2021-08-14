@@ -1,5 +1,9 @@
 /*
- * Memory ordeirng example for RISC-V(RV64)/Linux
+ * Atomic operation example for RISC-V(RV64)/Linux
+ *
+ *   * atomic operations with weak consistency (without release/acquire).
+ *     * swap (amoswap)
+ *     * fetch and add (amoadd)
  *
  *   * see: The RISC-V Instruction Set Manual Volume I: Unprivileged ISA
  *          Appendix A RVWMO Explanatory Material
