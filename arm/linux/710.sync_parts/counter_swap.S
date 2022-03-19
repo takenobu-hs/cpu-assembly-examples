@@ -13,8 +13,10 @@ main:
         adr     x11, lock
         adr     x10, counter
 
+
+        mov     x2, 1
 L_loop:
-        ldr     x0, [x11]
+        swp     x2, x0, [x11]
         cbnz    x0, L_loop
 
         ldr     x1, [x10]
