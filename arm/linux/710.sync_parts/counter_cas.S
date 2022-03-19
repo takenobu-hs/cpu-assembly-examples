@@ -1,26 +1,33 @@
 /*
  * An atomic counter example for Arm(Armv8 aarch64)/Linux
  *
+ *   * cas instruction
+ *
  */
 
         .global main
 
 main:
-        /* save fp,lr registers */
+        /* save fp,lr registers for printf */
         stp     x29, x30, [sp, -16]!
 
 
+
+        /* set the address of the counter */
         adr     x10, counter
 
+
+        /* increment the counter with cas loop */
 L_loop:
-        ldr     x1, [x10]
-        mov     x2, x1
-        add     x5, x1, 1
+        ldr     x1, [x10]               /* x1 = *counter        */
+        mov     x2, x1                  /* save current counter */
+        add     x5, x1, 1               /* increment            */
 
-        cas     x1, x5, [x10]
+        cas     x1, x5, [x10]           /* cas instruction      */
 
-        cmp     x1, x2
+        cmp     x1, x2                  /* check result of cas  */
         bne     L_loop
+
 
 
         /* printf for result-checking */
@@ -29,7 +36,7 @@ L_loop:
         bl      printf    
 
 
-        /* restore fp,lr registers and return from main*/
+        /* restore fp,lr registers and return from main */
         ldp     x29, x30, [sp], 16
         ret
 

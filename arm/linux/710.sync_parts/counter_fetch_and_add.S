@@ -1,19 +1,25 @@
 /*
  * An atomic counter example for Arm(Armv8 aarch64)/Linux
  *
+ *   * fetch-and-add instruction
+ *
  */
 
         .global main
 
 main:
-        /* save fp,lr registers */
+        /* save fp,lr registers for printf */
         stp     x29, x30, [sp, -16]!
 
 
+
+        /* set the address of the counter */
         adr     x10, counter
 
+        /* increment the counter with fetch-and-add */
         mov     x1,  1
-        stadd   x1, [x10]
+        stadd   x1, [x10]              /* *counter = *counter + 1 */
+
 
 
         /* printf for result-checking */
@@ -22,7 +28,7 @@ main:
         bl      printf    
 
 
-        /* restore fp,lr registers and return from main*/
+        /* restore fp,lr registers and return from main */
         ldp     x29, x30, [sp], 16
         ret
 
