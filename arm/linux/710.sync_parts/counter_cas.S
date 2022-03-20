@@ -3,6 +3,19 @@
  *
  *   * cas instruction
  *
+ *   * C-like pseudo-code:
+ *       L_loop:
+ *         x1 = *counter;                       // read counter
+ *         x2 = x1;                             // save current cunter
+ *         x5 = x1 + 1;                         // increment
+ *
+ *         // cas instruction
+ *         tmp = *counter;                      // read counter
+ *         if (x1 == tmp) *counter = x5;        // swap if unchanged
+ *         x1 = tmp;
+ *
+ *         // check
+ *         if (x1 != x2) goto L_loop;           // loop if fail
  */
 
         .global main
@@ -19,13 +32,13 @@ main:
 
         /* increment the counter with cas loop */
 L_loop:
-        ldr     x1, [x10]               /* x1 = *counter        */
-        mov     x2, x1                  /* save current counter */
-        add     x5, x1, 1               /* increment            */
+        ldr     x1, [x10]               /* x1 = *counter           */
+        mov     x2, x1                  /* save current counter    */
+        add     x5, x1, 1               /* increment               */
 
-        cas     x1, x5, [x10]           /* cas instruction      */
+        cas     x1, x5, [x10]           /* cas instruction         */
 
-        cmp     x1, x2                  /* check result of cas  */
+        cmp     x1, x2                  /* check the result of cas */
         bne     L_loop
 
 

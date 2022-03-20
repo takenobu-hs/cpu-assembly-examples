@@ -3,6 +3,12 @@
  *
  *   * ll/sc instruction
  *
+ *   * C-like pseudo-code:
+ *       L_loop:
+ *         x1 = *counter;
+ *         x1 = x1 + 1;
+ *         if (not-conflict) *counter = x1;
+ *         if (fail) goto L_loop;
  */
 
         .global main
@@ -19,10 +25,10 @@ main:
 
         /* increment the counter with ll/sc loop */
 L_loop:
-        ldxr    x1, [x10]               /* x1 = *counter                    */
-        add     x1, x1, 1               /* x1 = x1 + 1                      */
-        stxr    w2, x1, [x10]           /* if (not-conflict) *counter = x1; */
-        cbnz    w2, L_loop              /* if (fail) goto L_loop;           */
+        ldxr    x1, [x10]               /* x1 = *counter                   */
+        add     x1, x1, 1               /* x1 = x1 + 1                     */
+        stxr    w2, x1, [x10]           /* if (not-conflict) *counter = x1 */
+        cbnz    w2, L_loop              /* if (fail) goto L_loop           */
 
 
 

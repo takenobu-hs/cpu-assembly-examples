@@ -3,6 +3,9 @@
  *
  *   * fetch-and-add instruction
  *
+ *   * C-like pseudo-code:
+ *         x1 = 1;
+ *         *counter = *counter + x1;
  */
 
         .global main
@@ -17,8 +20,8 @@ main:
         adr     x10, counter
 
         /* increment the counter with fetch-and-add */
-        mov     x1,  1
-        stadd   x1, [x10]              /* *counter = *counter + 1 */
+        mov     x1,  1                  /* x1 = 1 */
+        stadd   x1, [x10]               /* *counter = *counter + x1 */
 
 
 

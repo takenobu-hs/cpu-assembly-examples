@@ -3,6 +3,23 @@
  *
  *   * swap instruction
  *
+ *   * C-like pseudo-code:
+           // acquire the lock
+ *         x2 = 1;
+ *       L_loop:
+ *         x0 = *lock;
+ *         *lock = x2;
+ *         if (x0 != 0) goto L_loop;
+ *
+ *         // increment the counter
+ *         x1 = *counter;
+ *         x1 = x1 + 1;
+ *         *counter = x1;
+ *
+ *         // release the lock
+ *         x1 = 0;
+ *         *lock = x1;
+
  */
 
         .global main
@@ -19,19 +36,19 @@ main:
 
 
         /* acquire the lock */
-        mov     x2, 1
+        mov     x2, 1                           /* x2 = 1                  */
 L_loop:
-        swp     x2, x0, [x11]
-        cbnz    x0, L_loop
+        swp     x2, x0, [x11]                   /* x0 = *lock; *lock = x2  */
+        cbnz    x0, L_loop                      /* if (x0 !=0) goto L_loop */
 
         /* increment the counter */
-        ldr     x1, [x10]
-        add     x1, x1, 1
-        str     x1, [x10]
+        ldr     x1, [x10]                       /* x1 = *counter           */
+        add     x1, x1, 1                       /* x1 = x1 + 1             */
+        str     x1, [x10]                       /* *counter = x1           */
 
         /* release the lock */
-        mov     x1, 0
-        str     x1, [x11]
+        mov     x1, 0                           /* x1 = 0                  */
+        str     x1, [x11]                       /* *lock = x1              */
 
 
 
