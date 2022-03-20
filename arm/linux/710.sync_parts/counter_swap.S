@@ -66,7 +66,7 @@ L_loop:
         /* read-only data */
         .section .rodata
 fmt:
-        .string "x0 = %d\n"
+        .string "counter = %d\n"
 
 
         /* read-write initialized data */

@@ -39,7 +39,7 @@ main:
         /* read-only data */
         .section .rodata
 fmt:
-        .string "x10 = %d\n"
+        .string "counter = %d\n"
 
 
         /* read-write initialized data */
