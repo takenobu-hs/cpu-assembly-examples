@@ -75,4 +75,4 @@ fmt:
 lock:
         .quad   0
 counter:
-        .quad   0
+        .quad   10
