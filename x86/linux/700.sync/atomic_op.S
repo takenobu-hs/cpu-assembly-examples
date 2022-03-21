@@ -18,7 +18,7 @@ main:
         /* atomic operations */
         xchg    [rip + flag], rax       /* swap */
 
-        lock cmpxchg [rip + flag], rax  /* compare and swap */
+        lock cmpxchg [rip + flag], rbx  /* compare and swap */
 
         lock xadd    [rip + flag], rax  /* fetch and add */
 
