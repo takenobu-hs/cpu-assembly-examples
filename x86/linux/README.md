@@ -9,6 +9,7 @@ x86 assembly examples on linux
   * [getting time](./200.time) (./200.time)
   * [basic operations](./300.operation) (./300.operation)
   * [control flow](./400.control_flow) (./400.control_flow)
+  * [sync](./700.sync) (./700.sync), [sync_parts](./710.sync_parts) (./710.sync_parts)
 
 
 ## How to try
