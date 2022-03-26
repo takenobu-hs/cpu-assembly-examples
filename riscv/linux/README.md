@@ -8,6 +8,7 @@ RISC-V (RV64G) assembly examples on linux
   * [library call](./120.libc_call) (./120.libc_call)
   * [basic operations](./300.operation) (./300.operation)
   * [control flow](./400.control_flow) (./400.control_flow)
+  * [sync](./700.sync) (./700.sync), [sync_parts](./710.sync_parts) (./710.sync_parts)
 
 
 ## How to try
