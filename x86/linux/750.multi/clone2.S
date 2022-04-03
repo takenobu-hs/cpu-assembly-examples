@@ -20,20 +20,20 @@
 
 main:
         /* clone() for 1st child thread */
-        lea     rdi, child1[rip]         /* fn:          child1         */
-        lea     rsi, stackChild1Top[rip] /* child_stack: stackChild1Top */
-        mov     edx, 0x11                /* flags:       SIGCHLD        */
-        mov     ecx, 0                   /* arg:         NULL           */
-        mov     eax, 0                   /* the number of vector reg    */
+        lea     rdi, [rip + child1]         /* fn:          child1         */
+        lea     rsi, [rip + stackChild1Top] /* child_stack: stackChild1Top */
+        mov     edx, 0x11                   /* flags:       SIGCHLD        */
+        mov     ecx, 0                      /* arg:         NULL           */
+        mov     eax, 0                      /* the number of vector reg    */
         call    clone
 
 
         /* clone() for 2nd child thread */
-        lea     rdi, child2[rip]         /* fn:          child2         */
-        lea     rsi, stackChild2Top[rip] /* child_stack: stackChild2Top */
-        mov     edx, 0x11                /* flags:       SIGCHLD        */
-        mov     ecx, 0                   /* arg:         NULL           */
-        mov     eax, 0                   /* the number of vector reg    */
+        lea     rdi, [rip + child2]         /* fn:          child2         */
+        lea     rsi, [rip + stackChild2Top] /* child_stack: stackChild2Top */
+        mov     edx, 0x11                   /* flags:       SIGCHLD        */
+        mov     ecx, 0                      /* arg:         NULL           */
+        mov     eax, 0                      /* the number of vector reg    */
         call    clone
 
 
@@ -46,7 +46,7 @@ main:
 
 
         /* puts for trace-log */
-        lea     rdi, fmtMain[rip]
+        lea     rdi, [rip + fmtMain]
         call    puts
 
         /* return from main */
@@ -58,7 +58,7 @@ main:
         /* 1st child thread */
 child1:
         /* puts for trace-log */
-        lea     rdi, fmtChild1[rip]
+        lea     rdi, [rip + fmtChild1]
         call    puts
 
         /* sleep() */
@@ -74,7 +74,7 @@ child1:
         /* 2nd child thread */
 child2:
         /* puts for trace-log */
-        lea     rdi, fmtChild2[rip]
+        lea     rdi, [rip + fmtChild2]
         call    puts
 
         /* sleep() */

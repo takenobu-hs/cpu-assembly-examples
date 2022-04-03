@@ -18,11 +18,11 @@
 
 main:
         /* clone() */
-        lea     rdi, child[rip]         /* fn:          child         */
-        lea     rsi, stackChildTop[rip] /* child_stack: stackChildTop */
-        mov     edx, 0x11               /* flags:       SIGCHLD       */
-        mov     ecx, 0                  /* arg:         NULL          */
-        mov     eax, 0                  /* the number of vector reg   */
+        lea     rdi, [rip + child]         /* fn:          child         */
+        lea     rsi, [rip + stackChildTop] /* child_stack: stackChildTop */
+        mov     edx, 0x11                  /* flags:       SIGCHLD       */
+        mov     ecx, 0                     /* arg:         NULL          */
+        mov     eax, 0                     /* the number of vector reg   */
         call    clone
 
 
@@ -34,7 +34,7 @@ main:
 
 
         /* puts for trace-log */
-        lea     rdi, fmtMain[rip]
+        lea     rdi, [rip + fmtMain]
         call    puts
 
         /* return from main */
@@ -46,7 +46,7 @@ main:
         /* a child thread */
 child:
         /* puts for trace-log */
-        lea     rdi, fmtChild[rip]
+        lea     rdi, [rip + fmtChild]
         call    puts
 
         /* sleep() */
