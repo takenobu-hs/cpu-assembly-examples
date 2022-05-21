@@ -23,14 +23,14 @@ main:
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, r12                /* 2nd argument for printf */
         mov     rdx, r13                /* 3rd argument for printf */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
         /* printf for 2nd rdtsc */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, r14                /* 2nd argument for printf */
         mov     rdx, r15                /* 3rd argument for printf */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 

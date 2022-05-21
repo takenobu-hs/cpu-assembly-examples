@@ -12,17 +12,17 @@
 
 main:
         /* read(2) system-call */
-        mov     rax, 0                  /* system-call number: read() */
-        mov     rdi, 0                  /* fd: stdin */
+        mov     eax, 0                  /* system-call number: read() */
+        mov     edi, 0                  /* fd: stdin */
         lea     rsi, [rip + buf]        /* buf: */
-        mov     rdx, 3                  /* count: */
+        mov     edx, 3                  /* count: */
         syscall
 
         /* write(2) system-call */
-        mov     rax, 1                  /* system-call number: write() */
-        mov     rdi, 1                  /* fd: stdout */
+        mov     eax, 1                  /* system-call number: write() */
+        mov     edi, 1                  /* fd: stdout */
         lea     rsi, [rip + buf]        /* buf: */
-        mov     rdx, 3                  /* count: */
+        mov     edx, 3                  /* count: */
         syscall
 
 

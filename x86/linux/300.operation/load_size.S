@@ -26,7 +26,7 @@ main:
         mov     rdx, r12                /* 3nd argument */
         mov     rcx, r13                /* 4nd argument */
         mov     r8 , r14                /* 5nd argument */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 

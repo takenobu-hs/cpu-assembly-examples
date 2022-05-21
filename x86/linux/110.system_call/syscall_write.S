@@ -12,10 +12,10 @@
 
 main:
         /* write(2) system-call */
-        mov     rax, 1                  /* system-call number: write() */
-        mov     rdi, 1                  /* fd: stdout */
+        mov     eax, 1                  /* system-call number: write() */
+        mov     edi, 1                  /* fd: stdout */
         lea     rsi, [rip + msg]        /* buf: */
-        mov     rdx, 13                 /* count: */
+        mov     edx, 13                 /* count: */
         syscall
 
 

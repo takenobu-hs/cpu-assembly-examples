@@ -12,15 +12,15 @@
 
 main:
         /* time(2) system-call */
-        mov     rax, 201                /* system-call number: time() */
-        mov     rdi, 0                  /* tloc: null */
+        mov     eax, 201                /* system-call number: time() */
+        mov     edi, 0                  /* tloc: null */
         syscall                         /* get seconds into rax */
 
 
         /* printf for result-checking */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, rax                /* 2nd argument for printf */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 

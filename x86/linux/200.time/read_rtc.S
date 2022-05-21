@@ -14,22 +14,22 @@
 
 main:
         /* set io-port permissions with ioperm(2) */
-        mov     rdi, 0x70
-        mov     rsi, 2
-        mov     rdx, 1
+        mov     edi, 0x70
+        mov     esi, 2
+        mov     edx, 1
         call    ioperm                  /* see; man ioperm(2) */
 
 
         /* read real-time clock(RTC) */
         mov     al, 0                   /* RTC_SECONDS */
         out     0x70, al                /* write rtc */
-  	in      al, 0x71                /* read rtc */
+        in      al, 0x71                /* read rtc */
 
 
         /* printf for result-checking */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, rax                /* 2nd argument for printf */
-  	mov	rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 

@@ -14,53 +14,53 @@
 
 main:
         /* set io-port permissions with ioperm(2) */
-        mov     rdi, 0x70
-        mov     rsi, 2
-        mov     rdx, 1
+        mov     edi, 0x70
+        mov     esi, 2
+        mov     edx, 1
         call    ioperm                  /* see; man ioperm(2) */
 
 
         /* read real-time clock(RTC) for date */
         mov     al, 9                   /* RTC_YEAR */
         out     0x70, al                /* write rtc */
-  	in      al, 0x71                /* read rtc */
+        in      al, 0x71                /* read rtc */
         mov     rsi, rax                /* 2nd arg for printf */
 
         mov     al, 8                   /* RTC_MONTH */
         out     0x70, al                /* write rtc */
-  	in      al, 0x71                /* read rtc */
+        in      al, 0x71                /* read rtc */
         mov     rdx, rax                /* 3rd arg for printf */
 
         mov     al, 7                   /* RTC_DAY_OF_MONTH */
         out     0x70, al                /* write rtc */
-  	in      al, 0x71                /* read rtc */
+        in      al, 0x71                /* read rtc */
         mov     rcx, rax                /* 4th arg for printf */
 
         /* printf for result-checking */
         lea     rdi, [rip + fmt_date]   /* 1st argument for printf */
-  	mov	rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 
         /* read real-time clock(RTC) for time */
         mov     al, 4                   /* RTC_HOURS */
         out     0x70, al                /* write rtc */
-  	in      al, 0x71                /* read rtc */
+        in      al, 0x71                /* read rtc */
         mov     rsi, rax                /* 2nd arg for printf */
 
         mov     al, 2                   /* RTC_MINUTES */
         out     0x70, al                /* write rtc */
-  	in      al, 0x71                /* read rtc */
+        in      al, 0x71                /* read rtc */
         mov     rdx, rax                /* 3rd arg for printf */
 
         mov     al, 0                   /* RTC_SECONDS */
         out     0x70, al                /* write rtc */
-  	in      al, 0x71                /* read rtc */
+        in      al, 0x71                /* read rtc */
         mov     rcx, rax                /* 4th arg for printf */
 
         /* printf for result-checking */
         lea     rdi, [rip + fmt_time]   /* 1st argument for printf */
-  	mov	rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 

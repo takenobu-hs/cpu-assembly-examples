@@ -18,14 +18,14 @@
 
 main:
         /* call */
-        mov     rax, 100                /* passing 1st argument with rax */
+        mov     eax, 100                /* passing 1st argument with rax */
         call    func_inc                /* return value into rax */
 
 
         /* printf for result-checking */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, rax                /* 2nd argument */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
         /* return from main */
@@ -34,7 +34,7 @@ main:
 
         /* function declaration */
 func_inc:
-        add     rax, 1                  /* function body */
+        add     eax, 1                  /* function body */
         ret                             /* return to caller */
 
 

@@ -9,15 +9,15 @@
 
 main:
         /* Add operation */
-        mov     rax, 1
-        mov     rbx, 2
+        mov     eax, 1
+        mov     ebx, 2
         add     rax, rbx                /* rax <- rax + rbx */
 
 
         /* printf for result-checking */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, rax                /* 2nd argument for printf */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 

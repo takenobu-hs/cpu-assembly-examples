@@ -12,6 +12,6 @@
 
 main:
         /* exit(2) system-call */
-        mov     rax, 60                 /* system-call number: exit() */
-        mov     rdi, 0                  /* status: success */
+        mov     eax, 60                 /* system-call number: exit() */
+        mov     edi, 0                  /* status: success */
         syscall

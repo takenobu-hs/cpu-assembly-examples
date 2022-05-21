@@ -11,16 +11,16 @@
 
 main:
         /* putchar(3) library-call */
-        mov     rdi, 0x41               /* 'A' */
+        mov     edi, 0x41               /* 'A' */
         call    putchar
 
-        mov     rdi, 0x42               /* 'B' */
+        mov     edi, 0x42               /* 'B' */
         call    putchar
 
-        mov     rdi, 'C'
+        mov     edi, 'C'
         call    putchar
 
-        mov     rdi, '\n'
+        mov     edi, '\n'
         call    putchar
 
 

@@ -16,15 +16,15 @@
 
 main:
         /* test data */
-        mov     rax, 10                 /* Change here */
+        mov     eax, 10                 /* Change here */
 
 
         /* if (rax >= 0) */
-        cmp     rax, 0
+        cmp     eax, 0
         js      L_else
 
         /* then */
-        mov     rbx, 1
+        mov     ebx, 1
         jmp     L_endif
 
         /* else */
@@ -39,7 +39,7 @@ L_endif:
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, rax                /* 2nd argument */
         mov     rdx, rbx                /* 3rd argument */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 

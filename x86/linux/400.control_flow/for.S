@@ -15,24 +15,24 @@
 
 main:
         /* accumulator for test */
-        mov     rbx, 0                  /* rbx = 0 */
+        mov     ebx, 0                  /* rbx = 0 */
 
 
         /* `for`-structure */
-        mov     rax, 1                  /* rax = 1 */
+        mov     eax, 1                  /* rax = 1 */
 
 L_loop:
         add     rbx, rax                /* loop-body (rbx = rbx + rax) */
 
-        add     rax, 1                  /* rax++ */
-        cmp     rax, 10                 /* rax <= 10 */
+        add     eax, 1                  /* rax++ */
+        cmp     eax, 10                 /* rax <= 10 */
         jle     L_loop
 
 
         /* printf for result-checking */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, rbx                /* 2nd argument */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 

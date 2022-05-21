@@ -15,7 +15,7 @@ main:
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     esi, edx                /* 2nd argument for printf */
         mov     edx, eax                /* 3rd argument for printf */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 
@@ -26,7 +26,7 @@ main:
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     esi, edx                /* 2nd argument for printf */
         mov     edx, eax                /* 3rd argument for printf */
-        mov     rax, 0                  /* the number of vector regsters */
+        mov     eax, 0                  /* the number of vector regsters */
         call    printf
 
 
