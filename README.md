@@ -2,7 +2,7 @@
 CPU assembly examples
 =====================
 
-This is a repo about tiny assembly examples for myself.
+This is a repo about tiny assembly examples for various CPUs (x86, Arm, and RISC-V).
 This repo focuses on CPU hardware, not assembly notation.
 
 
