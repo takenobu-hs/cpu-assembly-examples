@@ -7,10 +7,9 @@
         .global main
 
 main:
-        /* save ra(return address) and sp(stack pointer) */
-        addi    sp,sp,-16
-        sd      ra,8(sp)
-        sd      s0,0(sp)
+        /* save ra(return address) */
+        addi    sp,sp,-8
+        sd      ra,(sp)
 
 
         /* Add operation */
@@ -25,10 +24,9 @@ main:
         jal     printf    
 
 
-        /* restore ra(return address) and sp(stack pointer) */
-        ld      ra,8(sp)
-        ld      s0,0(sp)
-        addi    sp,sp,16
+        /* restore ra(return address) */
+        ld      ra,(sp)
+        addi    sp,sp,8
 
         /* return from main */
         ret
