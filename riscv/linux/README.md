@@ -113,7 +113,7 @@ RISC-V (RV64G) assembly examples on linux
   * a0, a1, a2, a3, a4, a5, a6, a7  ->  a0, a1
 
 * see:
-  * [RISC-V ELF psABI specification](https://github.com/riscv/riscv-elf-psabi-doc/blob/master/riscv-elf.md)
+  * [RISC-V ELF psABI Document](https://github.com/riscv-non-isa/riscv-elf-psabi-doc)
   * glibc's sysdeps/unix/sysv/linux/riscv/syscall.c
 
 ### Tool installation on ubuntu (x86)
