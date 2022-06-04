@@ -7,7 +7,7 @@ GDB     = gdb
 
 CFLAGS       += -g -masm=intel
 ASFLAGS      += -g
-LDFLAGS      += -no-pie
+LDFLAGS      += -no-pie -pthread
 OBJDUMPFLAGS += -M intel
 GDBFLAGS     += -ex "set disassembly-flavor intel"
 
