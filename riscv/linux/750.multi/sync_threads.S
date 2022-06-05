@@ -1,0 +1,157 @@
+/*
+ * Sync threads example for RISC-V(RV64)/Linux
+ *
+ *   * Threads
+ *      * main:  a main thread
+ *      * child1: 1st child thread (set the sync_flag for 2nd thread)
+ *      * child2: 2nd child thread (wait 1st thread via the sync_flag)
+ *
+ *   * see:
+ *     * man pthread_create
+ */
+
+        .globl  main
+
+main:
+        /* puts for trace-log */
+        la      a0, fmtMain_start
+        jal     puts
+
+
+        /* pthread_create() */
+
+        /* for 1st child thread */
+        la      a0, tid1                /* pthread_t: &tid1       */
+        li      a1, 0                   /* pthread_attr_t: NULL   */
+        la      a2, child1              /* start_routine: &child1 */
+        li      a3, 0                   /* arg: NULL              */
+        jal     pthread_create
+
+        /* for 2nd child thread */
+        la      a0, tid2                /* pthread_t: &tid2       */
+        li      a1, 0                   /* pthread_attr_t: NULL   */
+        la      a2, child2              /* start_routine: &child2 */
+        li      a3, 0                   /* arg: NULL              */
+        jal     pthread_create
+
+
+        /* pthread_join() */
+
+        /* for 1st child thread */
+        la      t0, tid1
+        ld      a0, (t0)                /* pthread_t: tid1 */
+        li      a1, 0                   /* retval: NULL    */
+        jal     pthread_join
+
+        /* for 2nd child thread */
+        la      t0, tid2
+        ld      a0, (t0)                /* pthread_t: tid2 */
+        li      a1, 0                   /* retval: NULL    */
+        jal     pthread_join
+
+
+        /* puts for trace-log */
+        la      a0, fmtMain_finish
+        jal     puts
+
+        /* exit from main */
+        li      a0, 0                   /* status: EXIT_SUCCESS */
+        jal     exit
+
+
+
+
+        /* 1st child thread */
+child1:
+        addi    sp,sp,-8
+        sd      ra,(sp)
+
+        /* puts for trace-log */
+        la      a0, fmtChild1_start
+        jal     puts
+
+        /* wait your key-in */
+        la      a0, fmtChild1_prompt
+        jal     puts
+        jal     getchar
+
+
+        /* set the sync-flag to 1 */
+        li      t0, 1
+        la      t1, sync_flag
+        sd      t0, (t1)
+
+
+        /* puts for trace-log */
+        la      a0, fmtChild1_finish
+        jal     puts
+
+        /* finish this thead */
+        li      a0, 0                   /* return value (not used) */
+        ld      ra,(sp)
+        addi    sp,sp,8
+        ret
+
+
+
+        /* 2nd child thread */
+child2:
+        addi    sp,sp,-8
+        sd      ra,(sp)
+
+        /* puts for trace-log */
+        la      a0, fmtChild2_start
+        jal     puts
+
+
+        /* wait 1st thread via the sync_flag */
+L_loop:
+        la      t2, sync_flag
+        ld      t0, (t2)
+        li      t1, 1
+        bne     t0, t1, L_loop
+
+
+        /* puts for trace-log */
+        la      a0, fmtChild2_finish
+        jal     puts
+
+        /* finish this thead */
+        li      a0, 0                   /* return value (not used) */
+        ld      ra,(sp)
+        addi    sp,sp,8
+        ret
+
+
+
+        /* read-only data */
+        .section .rodata
+fmtMain_start:
+        .string "main(): start"
+fmtMain_finish:
+        .string "main(): finish"
+
+fmtChild1_start:
+        .string "child1(): start"
+fmtChild1_prompt:
+        .string "child1(): enter key:"
+fmtChild1_finish:
+        .string "child1(): finish"
+
+fmtChild2_start:
+        .string "child2(): start"
+fmtChild2_finish:
+        .string "child2(): finish"
+
+
+
+        /* read-write data */
+        .data
+        .balign 8
+tid1:
+        .quad   0
+tid2:
+        .quad   0
+
+sync_flag:
+        .quad   0
