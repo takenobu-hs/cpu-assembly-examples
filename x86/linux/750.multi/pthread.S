@@ -7,6 +7,7 @@
  *
  *   * see:
  *     * man pthread_create
+ *     * man pthread_join
  *     * x86-64 ABI (https://gitlab.com/x86-psABIs/x86-64-ABI)
  */
 
@@ -17,22 +18,26 @@ main:
         sub     rsp, 8                  /* 16byte align */
 
         /* puts for trace-log */
-        lea     rdi, [rip + fmtMain]
+        lea     rdi, [rip + fmtMain1]
         call    puts
 
 
-        /* pthread_create() */
+        /* create a thread with pthread_create() */
         lea     rdi, [rip + tid]        /* pthread_t: &tid       */
         mov     esi, 0                  /* pthread_attr_t: NULL  */
         lea     rdx, [rip + child]      /* start_routine: &child */
         mov     ecx, 0                  /* arg: NULL             */
         call    pthread_create
 
+        /* wait the thread with pthread_join() */
+        mov     rdi, [rip + tid]        /* pthread_t: tid */
+        mov     esi, 0                  /* retval: NULL   */
+        call    pthread_join
 
-        /* sleep() */
-        mov     edi, 5                  /* seconds: 5sec */
-        call    sleep
 
+        /* puts for trace-log */
+        lea     rdi, [rip + fmtMain2]
+        call    puts
 
         /* exit from main */
         mov     edi, 0                  /* status: EXIT_SUCCESS */
@@ -57,8 +62,10 @@ child:
 
         /* read-only data */
         .section .rodata
-fmtMain:
+fmtMain1:
         .string "main(): start"
+fmtMain2:
+        .string "main(): finish"
 fmtChild:
         .string "child(): start"
 
