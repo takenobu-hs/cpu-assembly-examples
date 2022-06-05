@@ -7,7 +7,7 @@ GDB     = gdb-multiarch
 
 CFLAGS  += -g
 ASFLAGS += -g -march=armv8.1-a		# armv8.1 for +lse
-LDFLAGS += -static
+LDFLAGS += -static -pthread
 
 
 include ../../../Makefile
