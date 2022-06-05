@@ -9,6 +9,7 @@ Arm (Armv8 aarch64) assembly examples on linux
   * [basic operations](./300.operation) (./300.operation)
   * [control flow](./400.control_flow) (./400.control_flow)
   * [sync](./700.sync) (./700.sync), [sync_parts](./710.sync_parts) (./710.sync_parts)
+  * [multi-threads](./750.multi) (./750.multi)
 
 
 ## How to try
