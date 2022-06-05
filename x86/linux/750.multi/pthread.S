@@ -26,7 +26,6 @@ main:
         mov     rsi, 0                  /* pthread_attr_t: NULL     */
         lea     rdx, [rip + child]      /* start_routine: child     */
         mov     ecx, 0                  /* arg: NULL                */
-        mov     eax, 0                  /* the number of vector reg */
         call    pthread_create
 
 
