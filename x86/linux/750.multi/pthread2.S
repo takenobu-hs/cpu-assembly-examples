@@ -16,7 +16,7 @@
         .globl  main
 
 main:
-        sub     rsp, 8                  /* 16byte align */
+        sub     rsp, 8                  /* 16-byte alignment */
 
         /* puts for trace-log */
         lea     rdi, [rip + fmtMainStart]
@@ -65,14 +65,14 @@ main:
 
         /* 1st child thread */
 child1:
-        sub     rsp, 8                  /* 16byte align */
+        sub     rsp, 8                  /* 16-byte alignment */
 
         /* puts for trace-log */
         lea     rdi, [rip + fmtChild1]
         call    puts
 
         /* finish this thead */
-        mov     eax, 0                  /* return value */
+        mov     eax, 0                  /* return value (not used) */
         add     rsp, 8
         ret
 
@@ -80,14 +80,14 @@ child1:
 
         /* 2nd child thread */
 child2:
-        sub     rsp, 8                  /* 16byte align */
+        sub     rsp, 8                  /* 16-byte alignment */
 
         /* puts for trace-log */
         lea     rdi, [rip + fmtChild2]
         call    puts
 
         /* finish this thead */
-        mov     eax, 0                  /* return value */
+        mov     eax, 0                  /* return value (not used) */
         add     rsp, 8
         ret
 
