@@ -22,10 +22,10 @@ main:
 
 
         /* pthread_create() */
-        lea     rdi, [rip + tid]        /* pthread_t:           */
-        mov     esi, 0                  /* pthread_attr_t: NULL */
-        lea     rdx, [rip + child]      /* start_routine: child */
-        mov     ecx, 0                  /* arg: NULL            */
+        lea     rdi, [rip + tid]        /* pthread_t: &tid       */
+        mov     esi, 0                  /* pthread_attr_t: NULL  */
+        lea     rdx, [rip + child]      /* start_routine: &child */
+        mov     ecx, 0                  /* arg: NULL             */
         call    pthread_create
 
 
@@ -49,7 +49,7 @@ child:
         call    puts
 
         /* finish this thead */
-        mov     eax, 0                  /* status: */
+        mov     eax, 0                  /* return value */
         add     rsp, 8
         ret
 
