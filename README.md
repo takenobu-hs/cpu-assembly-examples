@@ -2,8 +2,9 @@
 CPU assembly examples
 =====================
 
-This is a repo about tiny assembly examples for various CPUs (x86, Arm, and RISC-V).
-This repo focuses on CPU hardware, not assembly notation.
+* This is a repo about tiny assembly examples for various CPUs (x86, Arm, and RISC-V).
+* There are examples such as system-calls, library-calls, load/store, if/for/call, barriers, atomics, and threads.
+* This repo focuses on CPU hardwares, not assembly notation or ABI conventions.
 
 
 ## Contents
