@@ -7,7 +7,7 @@ GDB     = riscv64-unknown-linux-gnu-gdb
 
 CFLAGS  += -g -march=rv64g		# without rv64c (compact instruction)
 ASFLAGS += -g
-LDFLAGS += -static
+LDFLAGS += -static -pthread
 
 
 include ../../../Makefile
