@@ -56,7 +56,7 @@ main:
 
         /* exit from main */
         mov     x0, 0                   /* status: EXIT_SUCCESS */
-        bl    exit
+        bl      exit
 
 
 
