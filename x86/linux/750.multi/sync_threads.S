@@ -102,10 +102,10 @@ child2:
 
 
         /* wait 1st thread via the sync_flag */
-loop:
+L_loop:
         mov     rax, [rip + sync_flag]
         cmp     rax, 0
-        je      loop
+        je      L_loop
 
 
         /* puts for trace-log */
