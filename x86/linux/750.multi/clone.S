@@ -5,7 +5,10 @@
  *      * main:  a main thread
  *      * child: a child thread (cloned from the main thread)
  *
- *   * clone(2) system-call
+ *   * NOTE:
+ *     * This is a simple example for clone with CLONE_VM.
+ *     * You should be careful for handling stack and clone-arguments.
+ *
  *   * see:
  *     * man 2 clone
  *     * linux-kernel's arch/x86/entry/syscalls/syscall_64.tbl
@@ -18,18 +21,18 @@
 
 main:
         /* clone() */
-        lea     rdi, [rip + child]         /* fn:          child         */
-        lea     rsi, [rip + stackChildTop] /* child_stack: stackChildTop */
-        mov     edx, 0x11                  /* flags:       SIGCHLD       */
-        mov     ecx, 0                     /* arg:         NULL          */
-        mov     eax, 0                     /* the number of vector reg   */
+        lea     rdi, [rip + child]         /* fn: &child                  */
+        lea     rsi, [rip + stackChildTop] /* child_stack: &stackChildTop */
+        mov     edx, 0x111                 /* flags: CLONE_VM | SIGCHLD   */
+        mov     ecx, 0                     /* arg: NULL                   */
+        mov     eax, 0                     /* the number of vector reg    */
         call    clone
 
 
         /* waitpid() */
-        mov     edi, eax                /* pid:     */
-        mov     esi, 0                  /* wstatus: */
-        mov     edx, 0                  /* options: */
+        mov     edi, eax                /* pid: (from clone) */
+        mov     esi, 0                  /* wstatus: NULL     */
+        mov     edx, 0                  /* options: 0        */
         call    waitpid
 
 
@@ -37,8 +40,8 @@ main:
         lea     rdi, [rip + fmtMain]
         call    puts
 
-        /* return from main */
-        mov     edi, 0                  /* status: */
+        /* exit from main */
+        mov     edi, 0                  /* status: EXIT_SUCCESS */
         call    exit
 
 
@@ -50,7 +53,7 @@ child:
         call    puts
 
         /* sleep() */
-        mov     edi, 1                  /* seconds: */
+        mov     edi, 1                  /* seconds: 1sec */
         call    sleep
 
         /* return to main-thread */
