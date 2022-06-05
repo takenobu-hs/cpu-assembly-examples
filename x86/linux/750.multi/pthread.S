@@ -18,7 +18,7 @@ main:
         sub     rsp, 8                  /* 16-byte alignment */
 
         /* puts for trace-log */
-        lea     rdi, [rip + fmtMain1]
+        lea     rdi, [rip + fmtMain_start]
         call    puts
 
 
@@ -36,7 +36,7 @@ main:
 
 
         /* puts for trace-log */
-        lea     rdi, [rip + fmtMain2]
+        lea     rdi, [rip + fmtMain_finish]
         call    puts
 
         /* exit from main */
@@ -62,9 +62,9 @@ child:
 
         /* read-only data */
         .section .rodata
-fmtMain1:
+fmtMain_start:
         .string "main(): start"
-fmtMain2:
+fmtMain_finish:
         .string "main(): finish"
 fmtChild:
         .string "child(): start"
