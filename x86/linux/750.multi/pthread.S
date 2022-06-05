@@ -22,10 +22,10 @@ main:
 
 
         /* pthread_create() */
-        lea     rdi, [rip + tid]        /* pthread_t:               */
-        mov     rsi, 0                  /* pthread_attr_t: NULL     */
-        lea     rdx, [rip + child]      /* start_routine: child     */
-        mov     ecx, 0                  /* arg: NULL                */
+        lea     rdi, [rip + tid]        /* pthread_t:           */
+        mov     rsi, 0                  /* pthread_attr_t: NULL */
+        lea     rdx, [rip + child]      /* start_routine: child */
+        mov     ecx, 0                  /* arg: NULL            */
         call    pthread_create
 
 
