@@ -11,6 +11,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* read(2) system-call */
         mov     eax, 0                  /* system-call number: read() */
         mov     edi, 0                  /* fd: stdin */
@@ -27,6 +30,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

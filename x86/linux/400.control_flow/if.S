@@ -15,6 +15,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* test data */
         mov     eax, 10                 /* Change here */
 
@@ -44,6 +47,7 @@ L_endif:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

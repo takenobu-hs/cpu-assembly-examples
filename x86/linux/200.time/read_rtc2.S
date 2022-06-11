@@ -13,6 +13,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* set io-port permissions with ioperm(2) */
         mov     edi, 0x70
         mov     esi, 2
@@ -65,6 +68,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

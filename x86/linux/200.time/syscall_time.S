@@ -11,6 +11,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* time(2) system-call */
         mov     eax, 201                /* system-call number: time() */
         mov     edi, 0                  /* tloc: null */
@@ -25,6 +28,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

@@ -26,6 +26,8 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
 
         /* acquire the lock */
 L_loop:
@@ -52,6 +54,7 @@ L_loop:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

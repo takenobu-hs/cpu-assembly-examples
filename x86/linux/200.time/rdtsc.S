@@ -8,6 +8,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* read time-stamp counter (TSC) */
         rdtsc                           /* read TSC into edx:eax */
 
@@ -21,6 +24,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
         

@@ -11,6 +11,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* printf(3) library-call */
         lea     rdi, [rip + msg]        /* 1st argument */
         mov     eax, 0                  /* the number of vector regsters */
@@ -18,6 +21,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

@@ -10,6 +10,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* putchar(3) library-call */
         mov     edi, 0x41               /* 'A' */
         call    putchar
@@ -25,4 +28,5 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret

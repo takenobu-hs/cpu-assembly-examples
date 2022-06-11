@@ -20,6 +20,9 @@
         .globl  main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* clone() */
         lea     rdi, [rip + child]         /* fn: &child                  */
         lea     rsi, [rip + stackChildTop] /* child_stack: &stackChildTop */
@@ -48,6 +51,9 @@ main:
 
         /* a child thread */
 child:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* puts for trace-log */
         lea     rdi, [rip + fmtChild]
         call    puts
@@ -58,6 +64,7 @@ child:
 
         /* return to main-thread */
         mov     eax, 0
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

@@ -14,6 +14,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* accumulator for test */
         mov     ebx, 0                  /* rbx = 0 */
 
@@ -37,6 +40,7 @@ L_loop:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

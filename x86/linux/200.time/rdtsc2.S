@@ -8,6 +8,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* 1st rdtsc */
         rdtsc                           /* read TSC into edx:eax */
 
@@ -31,6 +34,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

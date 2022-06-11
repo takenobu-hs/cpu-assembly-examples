@@ -11,6 +11,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* exit(2) system-call */
         mov     eax, 60                 /* system-call number: exit() */
         mov     edi, 0                  /* status: success */

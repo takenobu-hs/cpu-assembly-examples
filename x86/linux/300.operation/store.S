@@ -8,6 +8,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* Store operation */
         mov     rax, 0xfedcba9876543210
         mov     [rip + memory_buf], rax         /* store (64 bits) */
@@ -24,6 +27,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

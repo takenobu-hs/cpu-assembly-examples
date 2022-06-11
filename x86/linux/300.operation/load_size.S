@@ -13,6 +13,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* Load operation */
         mov     r11,  [rip + byte_array]                /* load (64 bits) */
         mov     r12d, [rip + byte_array]                /* load (32 bits) */
@@ -31,6 +34,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

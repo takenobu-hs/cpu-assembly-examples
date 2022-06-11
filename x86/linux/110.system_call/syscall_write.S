@@ -11,6 +11,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* write(2) system-call */
         mov     eax, 1                  /* system-call number: write() */
         mov     edi, 1                  /* fd: stdout */
@@ -20,6 +23,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

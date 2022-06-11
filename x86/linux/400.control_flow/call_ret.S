@@ -17,6 +17,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* call */
         mov     eax, 100                /* passing 1st argument with rax */
         call    func_inc                /* return value into rax */
@@ -29,6 +32,7 @@ main:
         call    printf
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

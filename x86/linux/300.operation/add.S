@@ -8,6 +8,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* Add operation */
         mov     eax, 1
         mov     ebx, 2
@@ -22,6 +25,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

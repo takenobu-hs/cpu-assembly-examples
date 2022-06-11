@@ -15,6 +15,9 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
+
         /* atomic operations */
         xchg    [rip + flag], rax       /* swap */
 
@@ -24,6 +27,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 

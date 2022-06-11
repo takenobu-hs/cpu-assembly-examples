@@ -13,6 +13,8 @@
         .global main
 
 main:
+        sub     rsp, 8                  /* 16-byte alignment */
+
 
         /* increment the counter with fetch-and-add */
         mov       rax, 0x1                      /* rax = 1 */
@@ -27,6 +29,7 @@ main:
 
 
         /* return from main */
+        add     rsp, 8                  /* 16-byte alignment */
         ret
 
 
