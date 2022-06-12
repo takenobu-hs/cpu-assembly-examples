@@ -77,22 +77,22 @@ child1:
 
 
         /* increment loop for shared-counter */
-        mov     eax, 0                  /* loop variable   */
+        mov     ecx, 0                  /* loop variable   */
         mov     rbx, 5000000            /* loop max-number */
 
 L1_loop:
-        mov     rcx, 1
-        lock xadd [rip + counter], rcx  /* increment the shared-counter */
+        mov     rax, 1
+        lock xadd [rip + counter], rax  /* increment the shared-counter */
 
-        add     eax, 1                  /* increment the loop-variable */
-        cmp     rax, rbx
+        add     rcx, 1                  /* increment the loop-variable */
+        cmp     rcx, rbx
         jl      L1_loop
 
 
 
         /* puts for trace-log */
         lea     rdi, [rip + fmtChild1_finish]   /* 1st argument for printf   */
-        mov     rsi, rax                        /* 2nd argument              */
+        mov     rsi, rcx                        /* 2nd argument              */
         mov     eax, 0                          /* the number of vector regs */
         call    printf
 
@@ -114,22 +114,22 @@ child2:
 
 
         /* increment loop for shared-counter */
-        mov     eax, 0                  /* loop variable   */
+        mov     ecx, 0                  /* loop variable   */
         mov     rbx, 5000000            /* loop max-number */
 
 L2_loop:
-        mov     rcx, 1
-        lock xadd [rip + counter], rcx  /* increment the shared-counter */
+        mov     rax, 1
+        lock xadd [rip + counter], rax  /* increment the shared-counter */
 
-        add     eax, 1                  /* increment the loop-variable */
-        cmp     rax, rbx
+        add     rcx, 1                  /* increment the loop-variable */
+        cmp     rcx, rbx
         jl      L2_loop
 
 
 
         /* puts for trace-log */
         lea     rdi, [rip + fmtChild2_finish]   /* 1st argument for printf   */
-        mov     rsi, rax                        /* 2nd argument              */
+        mov     rsi, rcx                        /* 2nd argument              */
         mov     eax, 0                          /* the number of vector regs */
         call    printf
 
