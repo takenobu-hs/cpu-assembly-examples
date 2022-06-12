@@ -17,326 +17,118 @@ main:
         mov     rbx, 10000000           /* loop max-number */
 
         lea     rdx, [rip + buf]
+        mov     [rdx], rdx              /* rdx == &buf */
 
 L_loop:
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax                /* for sequencial issue */
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-
-        // 10-times
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
-
-        mov     rax, [rdx]
-        add     rdx, rax
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
+        mov     rdx, [rdx]
 
 
         add     rcx, 1                  /* increment the loop-variable */
