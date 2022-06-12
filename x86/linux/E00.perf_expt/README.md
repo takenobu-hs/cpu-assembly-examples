@@ -6,10 +6,13 @@ Performance experiments
 
 * latency_add.S
 * latency_mul.S
+* latency_load.S
 
 ```sh
 $ perf stat -e "cycles,instructions" ./latency_add
 
 $ perf stat -e "cycles,instructions" ./latency_mul
+
+$ perf stat -e "cycles,instructions" ./latency_load
 ```
 
