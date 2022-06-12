@@ -85,24 +85,24 @@ child1:
 
 
         /* increment loop for shared-counter */
-        mov     eax, 0                  /* loop variable   */
+        mov     ecx, 0                  /* loop variable   */
         mov     rbx, 5000000            /* loop max-number */
-        mov     rcx, 1
+        mov     rax, 1                  /* store dummy     */
 
 L1_loop:
-        mov     [rip + value1], rcx     /* store */
+        mov     [rip + value1], rax     /* store */
         mfence                          /* flush store-buffers */
         mov     rdx, [rip + value1]     /* load */
 
-        add     eax, 1                  /* increment the loop-variable */
-        cmp     rax, rbx
+        add     rcx, 1                  /* increment the loop-variable */
+        cmp     rcx, rbx
         jl      L1_loop
 
 
 
         /* puts for trace-log */
         lea     rdi, [rip + fmtChild1_finish]
-        call    puts  
+        call    puts
 
         /* finish this thead */
         mov     eax, 0                  /* return value (not used) */
@@ -122,24 +122,24 @@ child2:
 
 
         /* increment loop for shared-counter */
-        mov     eax, 0                  /* loop variable   */
+        mov     ecx, 0                  /* loop variable   */
         mov     rbx, 5000000            /* loop max-number */
-        mov     rcx, 1
+        mov     rax, 1                  /* store dummy     */
 
 L2_loop:
-        mov     [rip + value2], rcx     /* store */
+        mov     [rip + value2], rax     /* store */
         mfence                          /* flush store-buffers */
         mov     rdx, [rip + value2]     /* load */
 
-        add     eax, 1                  /* increment the loop-variable */
-        cmp     rax, rbx
+        add     rcx, 1                  /* increment the loop-variable */
+        cmp     rcx, rbx
         jl      L2_loop
 
 
 
         /* puts for trace-log */
         lea     rdi, [rip + fmtChild2_finish]
-        call    puts   
+        call    puts
 
         /* finish this thead */
         mov     eax, 0                  /* return value (not used) */
