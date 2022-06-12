@@ -8,8 +8,10 @@ Experiments with multithreading
 * counter_bad.S
 
 ```sh
+$ make -f ../Makefile counter_atomic
 $ ./counter_atomic
 
+$ make -f ../Makefile counter_bad
 $ ./counter_bad
 ```
 
