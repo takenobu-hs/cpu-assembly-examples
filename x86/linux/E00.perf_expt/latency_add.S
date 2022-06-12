@@ -14,7 +14,7 @@ main:
 
         /* loop */
         mov     ecx, 0                  /* loop variable   */
-        mov     rbx, 5000000            /* loop max-number */
+        mov     rbx, 10000000           /* loop max-number */
 
         mov     rax, 1
         mov     rdx, 1
