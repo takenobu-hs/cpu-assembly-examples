@@ -3,6 +3,13 @@
  *
  *   * `mul` instruction
  *
+ *   * C-like pseudo-code:
+ *
+ *         for (i=0; i<10000000; i++) {
+ *             mul instruction
+ *                   :                  // 100 times
+ *         }
+ *
  */
 
         .intel_syntax noprefix
@@ -12,130 +19,133 @@ main:
         sub     rsp, 8                  /* 16-byte alignment */
 
 
-        /* loop */
+        /* loop conditions */
         mov     ecx, 0                  /* loop variable   */
         mov     rbx, 10000000           /* loop max-number */
 
-        mov     rax, 1
-        mov     rdx, 1
+        mov     rax, 1                  /* 1st operand for mul instructions */
+        mov     r10, 1                  /* 2nd operand for mul instructions */
 
+
+        /* loop body */
 L_loop:
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10                     /* rdx:rax = rax * r10 */
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
-        mul     rdx
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
+        mul     r10
 
-        add     rcx, 1                  /* increment the loop-variable */
+        /* increment the loop-variable and loop-back */
+        add     rcx, 1
         cmp     rcx, rbx
         jl      L_loop
 
 
-        /* printf for result-checking */
+        /* print the last loop-variable */
         lea     rdi, [rip + fmt]        /* 1st argument for printf */
         mov     rsi, rcx                /* 2nd argument */
         mov     eax, 0                  /* the number of vector regsters */
