@@ -75,20 +75,20 @@ child1:
         call    puts
 
 
-
-        /* increment loop for shared-counter */
+        /* loop conditions */
         mov     ecx, 0                  /* loop variable   */
         mov     rbx, 5000000            /* loop max-number */
 
 L1_loop:
+        /* increment the shared-counter */
         mov     rax, [rip + counter]
         add     rax, 1
-        mov     [rip + counter], rax    /* increment the shared-counter */
+        mov     [rip + counter], rax
 
-        add     rcx, 1                  /* increment the loop-variable */
+        /* increment the loop-variable and loop-back */
+        add     rcx, 1
         cmp     rcx, rbx
         jl      L1_loop
-
 
 
         /* puts for trace-log */
@@ -113,20 +113,20 @@ child2:
         call    puts
 
 
-
-        /* increment loop for shared-counter */
+        /* loop conditions */
         mov     ecx, 0                  /* loop variable   */
         mov     rbx, 5000000            /* loop max-number */
 
 L2_loop:
+        /* increment the shared-counter */
         mov     rax, [rip + counter]
         add     rax, 1
-        mov     [rip + counter], rax    /* increment the shared-counter */
+        mov     [rip + counter], rax
 
-        add     rcx, 1                  /* increment the loop-variable */
+        /* increment the loop-variable and loop-back */
+        add     rcx, 1
         cmp     rcx, rbx
         jl      L2_loop
-
 
 
         /* puts for trace-log */
