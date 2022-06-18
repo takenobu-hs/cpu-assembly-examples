@@ -11,6 +11,7 @@ x86 assembly examples on linux
   * [control flow](./400.control_flow) (./400.control_flow)
   * [sync](./700.sync) (./700.sync), [sync_parts](./710.sync_parts) (./710.sync_parts)
   * [multi-threads](./750.multi) (./750.multi)
+  * experiments (./E00.perf_expt) (./E10.multi_expt)
 
 
 ## How to try
