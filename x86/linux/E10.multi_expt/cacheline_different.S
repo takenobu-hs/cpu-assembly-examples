@@ -9,14 +9,14 @@
  *     * child1-thread:
  *         for (i=0; i<5000000; i++) {
  *             store to value1;
- *             memory_fence;
+ *             memory_fence;            // flush store-buffers
  *             load from value1;
  *         }
  *
  *     * child2-thread:
  *         for (i=0; i<5000000; i++) {
  *             store to value2;
- *             memory_fence;
+ *             memory_fence;            // flush store-buffers
  *             load from value2;
  *         }
  *
@@ -83,21 +83,22 @@ child1:
         call    puts
 
 
-
-        /* increment loop for shared-counter */
+        /* loop conditions */
         mov     ecx, 0                  /* loop variable   */
         mov     rbx, 5000000            /* loop max-number */
-        mov     rax, 1                  /* store dummy     */
+
+        mov     rax, 1                  /* dummy-data for store */
 
 L1_loop:
-        mov     [rip + value1], rax     /* store */
-        mfence                          /* flush store-buffers */
-        mov     rdx, [rip + value1]     /* load */
+        /* cache access */
+        mov     [rip + value1], rax
+        mfence
+        mov     rdx, [rip + value1]     /* measure here */
 
-        add     rcx, 1                  /* increment the loop-variable */
+        /* increment the loop-variable and loop-back */
+        add     rcx, 1
         cmp     rcx, rbx
         jl      L1_loop
-
 
 
         /* puts for trace-log */
@@ -120,21 +121,22 @@ child2:
         call    puts
 
 
-
-        /* increment loop for shared-counter */
+        /* loop conditions */
         mov     ecx, 0                  /* loop variable   */
         mov     rbx, 5000000            /* loop max-number */
-        mov     rax, 1                  /* store dummy     */
+
+        mov     rax, 1                  /* dummy-data for store */
 
 L2_loop:
-        mov     [rip + value2], rax     /* store */
-        mfence                          /* flush store-buffers */
-        mov     rdx, [rip + value2]     /* load */
+        /* cache access */
+        mov     [rip + value2], rax
+        mfence
+        mov     rdx, [rip + value2]     /* measure here */
 
-        add     rcx, 1                  /* increment the loop-variable */
+        /* increment the loop-variable and loop-back */
+        add     rcx, 1
         cmp     rcx, rbx
         jl      L2_loop
-
 
 
         /* puts for trace-log */
