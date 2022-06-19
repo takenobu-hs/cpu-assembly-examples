@@ -1,6 +1,7 @@
 /*
  * Simultaneous-access example for x86/Linux
  *
+ *   * without "false sharing"
  *   * Stores to different variables from two threads
  *   * DIFFERENT cache-line version (FAST)
  *
