@@ -93,7 +93,7 @@ child1:
 L1_loop:
         /* cache access */
         mov     [rip + value1], rax
-        mfence
+        sfence
         mov     rdx, [rip + value1]     /* measure here */
 
         /* increment the loop-variable and loop-back */
@@ -131,7 +131,7 @@ child2:
 L2_loop:
         /* cache access */
         mov     [rip + value2], rax
-        mfence
+        sfence
         mov     rdx, [rip + value2]     /* measure here */
 
         /* increment the loop-variable and loop-back */
