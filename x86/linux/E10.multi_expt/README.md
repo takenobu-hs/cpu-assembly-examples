@@ -1,6 +1,6 @@
 
-Experiments with multithreading
-===============================
+Experiments with multiprocessors
+================================
 
 ## Shared-counter with atomicity
 
@@ -37,11 +37,12 @@ diff files:
 ```sh
 $ diff counter_atomic.S counter_bad.S
 <         mov     rax, 1
-<         lock xadd [rip + counter], rax  /* increment the shared-counter */
+<         lock xadd [rip + counter], rax
 ---
 >         mov     rax, [rip + counter]
 >         add     rax, 1
->         mov     [rip + counter], rax    /* increment the shared-counter */
+>         mov     [rip + counter], rax
+>         sfence                          /* to read from cache (not store-buf)
 ```
 
 
@@ -55,8 +56,8 @@ $ make -f ../Makefile cacheline_different
 $ perf stat -e "cycles,instructions,L1-dcache-loads,L1-dcache-load-misses" \
     ./cacheline_different
 
-        20,321,569      L1-dcache-loads
-            26,097      L1-dcache-load-misses     #    0.13% of all L1-dcache accesses
+        10,292,444      L1-dcache-loads
+            24,106      L1-dcache-load-misses     #    0.23% of all L1-dcache accesses
 ```
 
 
@@ -67,8 +68,8 @@ $ make -f ../Makefile cacheline_same
 $ perf stat -e "cycles,instructions,L1-dcache-loads,L1-dcache-load-misses" \
     ./cacheline_same
 
-        20,400,035      L1-dcache-loads
-         9,191,588      L1-dcache-load-misses     #   45.06% of all L1-dcache accesses
+        10,331,779      L1-dcache-loads
+         2,644,805      L1-dcache-load-misses     #   25.60% of all L1-dcache accesses
 ```
 
 diff files:
