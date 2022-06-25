@@ -84,6 +84,7 @@ L1_loop:
         mov     rax, [rip + counter]
         add     rax, 1
         mov     [rip + counter], rax
+        sfence                          /* to read from cache (not store-buf) */
 
         /* increment the loop-variable and loop-back */
         add     rcx, 1
@@ -122,6 +123,7 @@ L2_loop:
         mov     rax, [rip + counter]
         add     rax, 1
         mov     [rip + counter], rax
+        sfence                          /* to read from cache (not store-buf) */
 
         /* increment the loop-variable and loop-back */
         add     rcx, 1
