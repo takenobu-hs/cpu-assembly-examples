@@ -13,9 +13,12 @@ main:
         addi    sp,sp,-8
         sd      ra,(sp)
 
+        li      x6, 100                 /* test data */
+
 
         /* printf(3) library-call */
         la      a0, msg                 /* 1st argument */
+        mv      a1, x6                  /* 2nd argument */
         jal     printf    
 
 
@@ -30,4 +33,4 @@ main:
         /* read-only data */
         .section .rodata
 msg:
-        .string "Hello world!\n"
+        .string "x6 = %d\n"
