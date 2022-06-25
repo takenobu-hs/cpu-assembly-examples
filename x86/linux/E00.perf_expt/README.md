@@ -95,7 +95,7 @@ $ perf stat -e "cycles,instructions,L1-dcache-loads,L1-dcache-load-misses" \
 diff files:
 
 ```sh
-$ diff branch_miss_few.S branch_miss_many.S
+$ diff cache_miss_few.S cache_miss_many.S
 <         mov     r12, 64         /* stride is 64byte (cache-line size)   */
 ---
 >         mov     r12, 2048       /* stride is 2Kbyte (cache-macro? size) */
