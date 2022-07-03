@@ -10,7 +10,7 @@
  *
  *             x = xorshift();                // generate a random number
  *
- *             if ((x & 1) == 0) goto L_br;   // branch-prediction test
+ *             if (x == x) goto L_br;         // branch-prediction test
  *             nop;
  *         L_br:
  *
