@@ -100,3 +100,42 @@ $ diff cache_miss_few.S cache_miss_many.S
 ---
 >         mov     r12, 2048       /* stride is 2Kbyte (cache-macro? size) */
 ```
+
+
+## TLB misses (capacity-miss)
+
+### tlb_miss_few.S
+
+```sh
+$ make -f ../Makefile tlb_miss_few
+$ perf stat -e "cycles,instructions,L1-dcache-loads,dTLB-loads,dTLB-load-misses" \
+    ./tlb_miss_few
+
+       609,318,688      cycles
+       901,212,631      instructions
+       100,334,179      L1-dcache-loads
+       100,334,179      dTLB-loads
+               844      dTLB-load-misses          #    0.00% of all dTLB cache accesses
+
+### tlb_miss_many.S
+
+```sh
+$ make -f ../Makefile tlb_miss_many
+$ perf stat -e "cycles,instructions,L1-dcache-loads,dTLB-loads,dTLB-load-misses" \
+    ./tlb_miss_many
+
+     2,332,532,859      cycles
+       910,194,864      instructions
+       102,914,279      L1-dcache-loads
+       102,914,279      dTLB-loads
+       100,014,282      dTLB-load-misses          #   97.18% of all dTLB cache accesses
+```
+
+diff files:
+
+```sh
+$ diff tlb_miss_few.S tlb_miss_many.S
+<         mov     r13, 0xff            /* wrap for 256 times           */
+---
+>         mov     r13, 0x1fff          /* wrap for 8192 times */
+```
