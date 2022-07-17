@@ -116,6 +116,7 @@ $ perf stat -e "cycles,instructions,L1-dcache-loads,dTLB-loads,dTLB-load-misses"
        100,334,179      L1-dcache-loads
        100,334,179      dTLB-loads
                844      dTLB-load-misses          #    0.00% of all dTLB cache accesses
+```
 
 ### tlb_miss_many.S
 
