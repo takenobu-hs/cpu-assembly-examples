@@ -2,6 +2,40 @@
 Experiments with multiprocessors
 ================================
 
+## Cache-line(s) with line-invalidation
+
+### cacheline_different.S
+
+```sh
+$ make -f ../Makefile cacheline_different
+$ perf stat -e "cycles,instructions,L1-dcache-loads,L1-dcache-load-misses" \
+    ./cacheline_different
+
+        10,292,444      L1-dcache-loads
+            24,106      L1-dcache-load-misses     #    0.23% of all L1-dcache accesses
+```
+
+
+### cacheline_same.S
+
+```sh
+$ make -f ../Makefile cacheline_same
+$ perf stat -e "cycles,instructions,L1-dcache-loads,L1-dcache-load-misses" \
+    ./cacheline_same
+
+        10,331,779      L1-dcache-loads
+         2,644,805      L1-dcache-load-misses     #   25.60% of all L1-dcache accesses
+```
+
+diff files:
+
+```sh
+$ diff cacheline_different.S cacheline_same.S
+<         .space 64               /* padding for different cache-lines */
+```
+
+
+
 ## Shared-counter with atomicity
 
 ### counter_atomic.S
@@ -43,38 +77,4 @@ $ diff counter_atomic.S counter_bad.S
 >         add     rax, 1
 >         mov     [rip + counter], rax
 >         sfence                          /* to read from cache (not store-buf)
-```
-
-
-
-## Cache-line(s) with line-invalidation
-
-### cacheline_different.S
-
-```sh
-$ make -f ../Makefile cacheline_different
-$ perf stat -e "cycles,instructions,L1-dcache-loads,L1-dcache-load-misses" \
-    ./cacheline_different
-
-        10,292,444      L1-dcache-loads
-            24,106      L1-dcache-load-misses     #    0.23% of all L1-dcache accesses
-```
-
-
-### cacheline_same.S
-
-```sh
-$ make -f ../Makefile cacheline_same
-$ perf stat -e "cycles,instructions,L1-dcache-loads,L1-dcache-load-misses" \
-    ./cacheline_same
-
-        10,331,779      L1-dcache-loads
-         2,644,805      L1-dcache-load-misses     #   25.60% of all L1-dcache accesses
-```
-
-diff files:
-
-```sh
-$ diff cacheline_different.S cacheline_same.S
-<         .space 64               /* padding for different cache-lines */
 ```
