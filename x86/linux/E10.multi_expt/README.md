@@ -36,6 +36,36 @@ $ diff cacheline_different.S cacheline_same.S
 
 
 
+## Memory ordering
+
+### ordering_unexpected.S
+
+```sh
+$ make -f ../Makefile ordering_unexpected
+$ ./ordering_unexpected
+child1(): UNEXPECTED!: r14 == 0 && r15 == 0; loop-variable = 342
+child2(): UNEXPECTED!: r14 == 0 && r15 == 0; loop-variable = 342
+```
+
+
+### ordering_force.S
+
+```sh
+$ make -f ../Makefile ordering_force
+$ ./ordering_force
+child1(): finish: loop-variable = 5000000
+child2(): finish: loop-variable = 5000000
+```
+
+diff files:
+
+```sh
+$ diff diff ordering_unexpected.S ordering_force.S
+>         mfence                          /* force ordering */
+```
+
+
+
 ## Shared-counter with atomicity
 
 ### counter_atomic.S
