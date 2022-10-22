@@ -1,5 +1,5 @@
 /*
- * Simultaneous-access example for x86/Linux
+ * Simultaneous-access example for Arm(Armv8 aarch64)/Linux
  *
  *   * Access to the shared variable from two threads
  *   * NON-ATOMIC version (the counter will NOT be correct)
