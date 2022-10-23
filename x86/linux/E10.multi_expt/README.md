@@ -60,7 +60,7 @@ child2(): finish: loop-variable = 5000000
 diff files:
 
 ```sh
-$ diff diff ordering_unexpected.S ordering_force.S
+$ diff ordering_unexpected.S ordering_force.S
 >         mfence                          /* force ordering */
 ```
 
