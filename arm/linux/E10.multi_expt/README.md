@@ -66,6 +66,38 @@ $ diff ordering_unexpected.S ordering_force.S
 
 
 
+## Memory ordering (weak-ordering)
+
+### weak_ordering_unexpected.S
+
+```sh
+$ make -f ../Makefile weak_ordering_unexpected
+$ ./weak_ordering_unexpected
+child2(): ERROR!: req = 0x1, info = 0xbad,  loop-variable = 82852
+```
+
+
+### weak_ordering_force.S
+
+```sh
+$ make -f ../Makefile weak_ordering_force
+$ ./weak_ordering_force
+child1(): finish: loop-variable = 5000000
+child2(): finish: loop-variable = 5000000
+```
+
+diff files:
+
+```sh
+$ diff weak_ordering_unexpected.S weak_ordering_force.S
+104a107
+>         dmb     st                      /* FORCE ORDERING */
+190a194
+>         dmb     ld                      /* FORCE ORDERING */
+```
+
+
+
 ## Shared-counter with atomicity
 
 ### counter_atomic.S
