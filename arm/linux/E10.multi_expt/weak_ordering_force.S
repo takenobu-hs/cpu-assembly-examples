@@ -12,8 +12,10 @@
  *             memory_barrier;          // FORCE ORDERING
  *             req  = 1;
  *
+ *             // 1st-sync to prepare next loop
  *             req  = 0;
  *             info = 0xbad;
+ *             // 2nd-sync to prepare next loop
  *         }
  *
  *     * child2-thread:
@@ -22,6 +24,9 @@
  *             memory_barrier;          // FORCE ORDERING
  *             load info;
  *             if (req == 1 && info != 0xcafe) goto error;
+ *
+ *             // 1st-sync to prepare next loop
+ *             // 2nd-sync to prepare next loop
  *         }
  *
  */
@@ -114,7 +119,7 @@ L1_loop:
 L1_loop_counter1:
         ldxr    x5, [x10]
         add     x5, x5, 1
-        stxr    w6, x5, [x10]                   /* sync_counter++ */
+        stxr    w6, x5, [x10]           /* sync_counter++ */
         cbnz    w6, L1_loop_counter1
 
 L1_loop_sync1:
@@ -137,7 +142,7 @@ L1_loop_sync1:
 L1_loop_counter2:
         ldxr    x5, [x10]
         add     x5, x5, 1
-        stxr    w6, x5, [x10]                   /* sync_counter++ */
+        stxr    w6, x5, [x10]           /* sync_counter++ */
         cbnz    w6, L1_loop_counter2
 
 L1_loop_sync2:
@@ -207,7 +212,7 @@ L2_continue:
 L2_loop_counter1:
         ldxr    x5, [x10]
         add     x5, x5, 1
-        stxr    w6, x5, [x10]                   /* sync_counter++ */
+        stxr    w6, x5, [x10]           /* sync_counter++ */
         cbnz    w6, L2_loop_counter1
 
 L2_loop_sync1:
@@ -221,7 +226,7 @@ L2_loop_sync1:
 L2_loop_counter2:
         ldxr    x5, [x10]
         add     x5, x5, 1
-        stxr    w6, x5, [x10]                   /* sync_counter++ */
+        stxr    w6, x5, [x10]           /* sync_counter++ */
         cbnz    w6, L2_loop_counter2
 
 L2_loop_sync2:
@@ -283,7 +288,7 @@ fmtChild2_start:
 fmtChild2_finish:
         .string "child2(): finish: loop-variable = %d\n"
 fmtChild2_error:
-        .string "child2(): ERROR!: req = 0x%x, info = 0x%x,  loop-variable = %d\n"
+        .string "child2(): UNEXPECTED!: req = 0x%x, info = 0x%x,  loop-variable = %d\n"
 
 
 

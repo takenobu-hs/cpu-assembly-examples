@@ -73,7 +73,7 @@ $ diff ordering_unexpected.S ordering_force.S
 ```sh
 $ make -f ../Makefile weak_ordering_unexpected
 $ ./weak_ordering_unexpected
-child2(): ERROR!: req = 0x1, info = 0xbad,  loop-variable = 82852
+child2(): UNEXPECTED!: req = 0x1, info = 0xbad,  loop-variable = 82852
 ```
 
 
