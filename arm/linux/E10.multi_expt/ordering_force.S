@@ -9,7 +9,7 @@
  *     * child1-thread:
  *         for (i=0; i<5000000; i++) {
  *             value_x    = 1;
- *             memory_fence;
+ *             memory_barrier;          // FORCE ORDERING
  *             result_x14 = value_y;
  *
  *             error check for (result_x14 == 0) && (result_x15 == 0);
@@ -19,7 +19,7 @@
  *     * child2-thread:
  *         for (i=0; i<5000000; i++) {
  *             value_y    = 1;
- *             memory_fence;
+ *             memory_barrier;          // FORCE ORDERING
  *             result_x15 = value_x;
  *
  *             error check for (result_x14 == 0) && (result_x15 == 0);
