@@ -9,7 +9,7 @@
  *     * child1-thread:
  *         for (i=0; i<5000000; i++) {
  *             value_x    = 1;
- *             memory_fence;
+ *             memory_fence;            // FORCE ORDERING
  *             result_r14 = value_y;
  *
  *             error check for (result_r14 == 0) && (result_r15 == 0);
@@ -19,7 +19,7 @@
  *     * child2-thread:
  *         for (i=0; i<5000000; i++) {
  *             value_y    = 1;
- *             memory_fence;
+ *             memory_fence;            // FORCE ORDERING
  *             result_r15 = value_x;
  *
  *             error check for (result_r14 == 0) && (result_r15 == 0);
@@ -97,7 +97,7 @@ L1_loop:
         /* store and load accesses */
         mov     rax, 1
         mov     [rip + value_x], rax    /* value_x = 1   */
-        mfence                          /* force ordering */
+        mfence                          /* FORCE ORDERING */
         mov     r14, [rip + value_y]    /* r14 = value_y */
 
 
@@ -180,7 +180,7 @@ L2_loop:
         /* store and load accesses */
         mov     rax, 1
         mov     [rip + value_y], rax    /* value_y = 1   */
-        mfence                          /* force ordering */
+        mfence                          /* FORCE ORDERING */
         mov     r15, [rip + value_x]    /* r15 = value_x */
 
 
