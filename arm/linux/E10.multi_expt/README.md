@@ -97,6 +97,30 @@ $ diff weak_ordering_unexpected.S weak_ordering_force.S
 ```
 
 
+### weak_ordering_force_relack.S
+
+```sh
+$ make -f ../Makefile weak_ordering_force_relack
+$ ./weak_ordering_force
+child1(): finish: loop-variable = 5000000
+child2(): finish: loop-variable = 5000000
+```
+
+diff files:
+
+```sh
+$ diff weak_ordering_unexpected.S weak_ordering_force_relack.S
+11c111
+<         str     x1, [x13]               /* req = 1       */
+---
+>         stlr    x1, [x13]               /* req = 1 with RELEASE ORDERING */
+193c193
+<         ldr     x9,  [x13]              /* load the req */
+---
+>         ldar    x9,  [x13]              /* load the req with ACQUIRE ORDERING */
+```
+
+
 
 ## Shared-counter with atomicity
 
