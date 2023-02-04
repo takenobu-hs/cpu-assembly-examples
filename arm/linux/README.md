@@ -12,6 +12,12 @@ Arm (Armv8 aarch64) assembly examples on linux
   * [multi-threads](./750.multi) (./750.multi)
 
 
+## Experiments
+  * [data-dependency, branch, cache, virtual-memory](./E00.perf_expt) (./E00.perf_expt)
+  * [syscall/exception](./E05.sys_expt) (./E05.sys_expt)
+  * [coherence, memory-ordering, atomic](./E10.multi_expt) (./E10.multi_expt)
+
+
 ## How to try
 
 * Assemble (generate binary)
