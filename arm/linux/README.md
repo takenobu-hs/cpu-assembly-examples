@@ -6,7 +6,7 @@ Arm (Armv8 aarch64) assembly examples on linux
   * [simple main](./100.main)  (./100.main)
   * [system call](./110.system_call) (./110.system_call)
   * [library call](./120.libc_call) (./120.libc_call)
-  * [basic operations](./300.operation) (./300.operation)
+  * [basic operations](./300.operation) (./300.operation), [floating](./310.floating) (./310.floating)
   * [control flow](./400.control_flow) (./400.control_flow)
   * [sync](./700.sync) (./700.sync), [sync_parts](./710.sync_parts) (./710.sync_parts)
   * [multi-threads](./750.multi) (./750.multi)
